@@ -29,18 +29,24 @@ class AdminController extends Controller
         return view('admin');
 
     }
-    
-    public function iniciarAdmin()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function conseguir_usuarios()
     {
+       $usuariosTabla = DB::select("SELECT * FROM usuario");
+       $arrayTabla = [
+            
+        "Tabla" => $usuariosTabla,
+    ];
+
+        return view('admin_usuarios',$arrayTabla);
     }
 
-    public function lista_usuarios(){
-        
-        $usuariosTabla = DB::select("SELECT * FROM usuario");
-        var_dump($usuariosTabla);
-        return view('admin.usuarios',$usuariosTabla);
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -59,13 +65,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $usuarioNombre = $request->get('aliasAdmin');
-        $usuarioContraseña=$request->get("contraseñaAdmin");
-        $arraySesionIniciada2 = [
-            "user" => $usuarioNombre,
-            "pass" => $usuarioContraseña,
-        ];
-        return view('admin', $arraySesionIniciada2);
+       
     }
 
     /**
@@ -111,5 +111,20 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+
     }
+
+/**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+     
+
+    
+
+
+
+
 }
+

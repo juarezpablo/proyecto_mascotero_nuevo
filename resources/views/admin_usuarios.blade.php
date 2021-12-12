@@ -1,7 +1,7 @@
 
 Vista de lista de usuarios
 
-@foreach ($usuariosTabla as $usuario)
+@foreach ($Tabla as $usuario)
 <table>
      <thead>
          <tr>
@@ -15,9 +15,9 @@ Vista de lista de usuarios
      <tbody>
      <tr>
          <td>{{ $usuario->alias }}</td>
-         <td>{{ $mascotas->contrasena }}</td>
-         <td>{{ $mascotas->nombre }}</td>
-         <td>{{ $mascotas->apellido }}</td>
+         <td>{{ $usuario->contrasena }}</td>
+         <td>{{ $usuario->nombre }}</td>
+         <td>{{ $usuario->apellido }}</td>
      
      </tr>
     </tbody>

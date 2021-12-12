@@ -14,7 +14,7 @@ Nombre de Admin es {{ session('alias') }} y su password es {{ session('pass') }}
 
 
 
-<a href="{{ route('admin.lista_usuarios') }}" id="lista_usuarios">Ver lista de Usuarios  </a>
+<a href="{{ route('admin.conseguir_usuarios') }}" id="lista_usuarios">Ver lista de Usuarios  </a>
 
 
 </body>
