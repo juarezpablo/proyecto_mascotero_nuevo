@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -22,12 +23,22 @@ class AdminController extends Controller
             "pass" => $usuarioContraseña,
         ];
         return view('admin', $arraySesionIniciada2);
+        
 
         */
+        return view('admin');
+
     }
     
     public function iniciarAdmin()
     {
+    }
+
+    public function lista_usuarios(){
+        
+        $usuariosTabla = DB::select("SELECT * FROM usuario");
+        var_dump($usuariosTabla);
+        return view('admin.usuarios',$usuariosTabla);
     }
 
     /**

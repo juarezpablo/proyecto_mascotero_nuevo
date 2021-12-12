@@ -1,20 +1,23 @@
-@foreach ($mascota as $mascotas)
+
+Vista de lista de usuarios
+
+@foreach ($usuariosTabla as $usuario)
 <table>
      <thead>
          <tr>
-             <th>Nombre de mascota</th>
-             <th>Tipo de Mascota</th>
-             <th>Sexo</th>
-             <th>Edad</th>
+             <th>Alias</th>
+             <th>Contraseña</th>
+             <th>Nombre</th>
+             <th>Apellido</th>
                  
          </tr>
      </thead>
      <tbody>
      <tr>
+         <td>{{ $usuario->alias }}</td>
+         <td>{{ $mascotas->contrasena }}</td>
          <td>{{ $mascotas->nombre }}</td>
-         <td>{{ $mascotas->tipo_mascota }}</td>
-         <td>{{ $mascotas->sexo }}</td>
-         <td>{{ $mascotas->edad }}</td>
+         <td>{{ $mascotas->apellido }}</td>
      
      </tr>
     </tbody>
@@ -22,3 +25,4 @@
 <a href="" class="btn btn-success">Link</a>
 <br><br><br>    
 @endforeach
+

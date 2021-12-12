@@ -31,6 +31,6 @@ Route::resource('usuario', UsuarioController::class);
 Route::resource('admin', AdminController::class);
 
 /* Route::get('/usuario/{$usuarioParametro}', 'UsuarioController@index')->name('usuario');*/
- Route::post('admin/usuario', [AdminController::class,'admin.usuarios'])->name('admin.usuarios');
+ Route::get('admin/usuario', [AdminController::class,'admin.lista_usuarios'])->name('admin.lista_usuarios');
 
 

@@ -50,8 +50,23 @@ class SessionController extends Controller
             "usuario" => $usuarioNombre,
             "contraseñaUsuario" => $usuarioContraseña,
         ];
+
+            
+            
+            // Retrieve a piece of data from the session...
+            /*$pepito = session('key');*/
+        
+            // Specifying a default value...
+            /*$pepito = session('key', 'usuarioNombre');*/
+        
+            // Store a piece of data in the session...
+
+            session(['alias' => $usuarioNombre]);
+            session(['pass'=> $usuarioContraseña]);
+        
+
             /*cargo la tabla admin, para comparar con el usuario ingresado, si es valido lo manda a una vista admin*/ 
-        $adminsTabla = DB::select("SELECT * FROM moderador");
+         $adminsTabla = DB::select("SELECT * FROM moderador");
              /*recorro la tabla admin y lo guardo en el objeto usuario, cada objeto usuario tiene un atributo nombre, password etc*/
 
             foreach ( $adminsTabla  as $admin ){ 
@@ -61,18 +76,18 @@ class SessionController extends Controller
         
                                 var_dump($admin->contrasena);
                                 var_dump($admin->alias);
-
+                                /*
                                  $arraySesion = [
                                 "aliasAdmin" => $usuarioNombre,
-                                "contraseñaAdmin" => $usuarioContraseña,
+                                "contraseñaAdmin" => $usuarioContraseña,*/
                                 /*
                                 "aliasAdmin"=>$admin->alias,
                                 "contrasenaAdmin"=>$admin->contrasena
-                                */
-                                           ];
+                                
+                                           ];*/
 
                                 /*return view('admin' , $arraySesion);*/
-                                return redirect ()->route("admin.store", $arraySesion);
+                                return redirect ()->route("admin.index");
                          
                         }  /*cierro el if*/  
             } /*cierro el for*/
@@ -83,14 +98,14 @@ class SessionController extends Controller
                 if(( $usuario->alias == $usuarioNombre) && ($usuario->contrasena == $usuarioContraseña)){
                     var_dump($usuario->contrasena);
                     var_dump($usuario->alias);
-
+                        /*
                      $arraySesion = [
                     "user" => $usuarioNombre,
-                    "pass" => $usuarioContraseña,/*
+                    "pass" => $usuarioContraseña,
                     "usuariotabla"=>$candidato->alias,             No es necesario
-                    "usuariopassword"=>$candidato->contrasena*/
-                               ];                                              /*Si el usuario y la pass son validos*/    
-                    return redirect ()->route("usuario.index", $arraySesion); /*Redirecciono al metodo index del controlador usuario*/
+                    "usuariopassword"=>$candidato->contrasena
+                               ];      */                                        /*Si el usuario y la pass son validos*/    
+                    return redirect ()->route("usuario.index"); /*Redirecciono al metodo index del controlador usuario*/
                 }
             }  
                     return view('registro');

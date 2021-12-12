@@ -10,7 +10,7 @@
 <body>
     View usuario
 
-<h2> Nombre de usuario es {{$user }}  password es {{$pass}}</h2>
+<h2> Nombre de usuario es {{ session('alias') }}  password es {{ session('pass') }}</h2>
 
 
 {{--

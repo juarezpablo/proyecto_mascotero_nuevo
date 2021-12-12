@@ -7,13 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Bienvenido {{ $user }}  </h1> 
+   <h1>Bienvenido {{ session('alias') }}  </h1> 
 
-Nombre de Admin es {{ $user }} y su password es {{ $pass }}
+Nombre de Admin es {{ session('alias') }} y su password es {{ session('pass') }}
 
-{{--
-<a href="{{ route ('admin/usuario') }}" id="lista_usuarios">Ver lista de Usuarios  </a>
---}}
+
+
+
+<a href="{{ route('admin.lista_usuarios') }}" id="lista_usuarios">Ver lista de Usuarios  </a>
+
 
 </body>
 </html>

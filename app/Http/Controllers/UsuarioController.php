@@ -13,14 +13,12 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        $usuarioNombre = $request->get('user');
-        $usuarioContraseña=$request->get("pass");
+        
         
         $mascotasTabla = DB::table("mascota")->select("*")->where("adoptado","like","no")->get();
         
         $arraySesionIniciada2 = [
-            "user" => $usuarioNombre,
-            "pass" => $usuarioContraseña,
+            
             "mascota" => $mascotasTabla,
         ];
                       
