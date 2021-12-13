@@ -13,10 +13,11 @@
 Nombre de Admin es {{ session('alias') }} y su password es {{ session('pass') }}
 
 
-
+<br>
 
 <a href="{{ route('admin.conseguir_usuarios') }}" id="lista_usuarios"  class="btn btn-success">Ver lista de Usuarios  </a>
-
+<br>
+<a href="{{ route('formularios.index')}}" id="forms"  class="btn btn-success">Ver Formularios  </a>
 
 </body>
 </html>
