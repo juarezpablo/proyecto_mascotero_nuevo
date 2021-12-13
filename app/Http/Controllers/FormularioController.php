@@ -78,11 +78,33 @@ class FormularioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $x)
+    public function update(Request $request)
     {
-        DB::insert("UPDATE `proyecto_huellitas`.`formulario_perro` SET `proceso_adopcion` = 'aceptado' WHERE (`id_formulario_perro` = '$x')");   
+       
+         
+         $id_form_perro= $request->post("id_formulariox");
+         $id_form_mascota=$request->post("id_mascotax");
+
+        DB::insert("UPDATE `proyecto_huellitas`.`formulario_perro` SET `proceso_adopcion` = 'aceptado' WHERE (`id_formulario_perro` = '$id_form_perro')");   
+        
+        
+        DB::insert("UPDATE `proyecto_huellitas`.`mascota` SET `adoptado` = 'si' WHERE (`id_mascota` = '$id_form_mascota')");
+        
+
         return redirect ()->route("formularios.index");
+                    
     
+    }
+    public function rechazar_adopcion(Request $request)
+    {
+        $id_form_perro= $request->post("id_formulariox");
+        $id_form_mascota=$request->post("id_mascotax");
+        DB::insert("UPDATE `proyecto_huellitas`.`formulario_perro` SET `proceso_adopcion` = 'rechazado' WHERE (`id_formulario_perro` = '$id_form_perro')");   
+        
+        
+        DB::insert("UPDATE `proyecto_huellitas`.`mascota` SET `adoptado` = 'no' WHERE (`id_mascota` = '$id_form_mascota')");
+
+        return redirect ()->route("formularios.index");
     }
 
 

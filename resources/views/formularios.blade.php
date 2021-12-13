@@ -18,7 +18,8 @@
                         <th>Donde dormira</th>
                         <th>Opinion cachorros</th>
                         <th>Estado de la adopcion</th>
-                        <th>Acciones</th>
+                        <th>Adopción</th>
+                        <th>Info Mascota/Usuario</th>
                         
                             
                     </tr>
@@ -35,17 +36,32 @@
                         
                         {{--Campo invisible,cada boton Asgnar va a ser un metodo put a la ruta formularios
                             con el parametro id_formulario para luego modificar un atributo en la base de datos--}}
-                        @php($x= $formulario->id_formulario_perro )
                         
+                        @php   (   $id_usuariox=$formulario->id_usuario)
+                          
+                          
                         
-                        <td><form action="{{ route('formularios.update',$x) }}" method="POST">
+
+                        <td>
+                            <form action="{{ route('formularios.update',$id_usuariox) }}" method="POST">
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id_form" value="{{$x}}">
+                            <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
+                            <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
                             <button type="submit" value="Asignar" class="btn-success">Asignar</button>
-                            <!-- Demas campos del formulario -->
-                        </form>
+                            
+                            </form>
+                            <form action="{{ route('formularios.rechazar_adopcion',$id_usuariox) }}" method="POST">
+                            <input type="hidden" name="_method" value="PUT">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
+                            <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
+                            <button type="submit"  value="Rechazar" class="btn-success">Rechazar</button>
+                            
+                            </form>
                         </td>
+                        <td>
+                        </td>   
 
                     </tr>
             
@@ -55,6 +71,8 @@
             </table>
         </div>
         <br><br><br>
+        
+        
         <div> <h1>Formularios Gatos</h1>
             <table class="table">
                 <thead>
