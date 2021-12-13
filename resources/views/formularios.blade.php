@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formularios</title>
 </head>
 <body>
         <div> <h1>Formularios Perros</h1>
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Fecha</th>
@@ -18,7 +19,7 @@
                         <th>Opinion cachorros</th>
                         <th>Estado de la adopcion</th>
                         <th>Acciones</th>
-                        <th>Plus</th>
+                        
                             
                     </tr>
                 </thead>
@@ -35,13 +36,13 @@
                         {{--Campo invisible,cada boton Asgnar va a ser un metodo put a la ruta formularios
                             con el parametro id_formulario para luego modificar un atributo en la base de datos--}}
                         @php($x= $formulario->id_formulario_perro )
-                        {{$x}}
+                        
                         
                         <td><form action="{{ route('formularios.update',$x) }}" method="POST">
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="id_form" value="{{$x}}">
-                            <button type="submit" value="Asignar">
+                            <button type="submit" value="Asignar" class="btn-success">Asignar</button>
                             <!-- Demas campos del formulario -->
                         </form>
                         </td>
@@ -55,7 +56,7 @@
         </div>
         <br><br><br>
         <div> <h1>Formularios Gatos</h1>
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Fecha</th>
