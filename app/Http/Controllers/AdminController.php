@@ -22,12 +22,14 @@ class AdminController extends Controller
             "user" => $usuarioNombre,
             "pass" => $usuarioContraseña,
         ];
-        return view('admin', $arraySesionIniciada2);
         
-
         */
+        if((session('rol')=='admin')){
         return view('admin');
-
+        }
+        else{
+            return redirect ()->route("registro.index");
+        }
     }
     /**
      * Display a listing of the resource.
@@ -37,13 +39,20 @@ class AdminController extends Controller
 
     public function conseguir_usuarios()
     {
+        if((session('rol')=='admin')){
        $usuariosTabla = DB::select("SELECT * FROM usuario");
        $arrayTabla = [
             
         "Tabla" => $usuariosTabla,
+
     ];
 
         return view('admin_usuarios',$arrayTabla);
+    }
+    else{
+        return redirect ()->route("registro.index");
+    
+    }
     }
 
     

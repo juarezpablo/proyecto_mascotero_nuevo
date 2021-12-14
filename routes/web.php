@@ -29,6 +29,7 @@ Route::get('/login', [SessionController::class,'index' ]);
 Route::post('/login', [SessionController::class,'store']);
 Route::get('/registro',[RegistroController::class,'index'] );
 Route::post('/registro',[RegistroController::class,'store' ]);
+Route::resource('/registro',RegistroController::class);
 
 Route::resource('usuario', UsuarioController::class);
 Route::get('admin/usuario', [AdminController::class,'conseguir_usuarios'])->name('admin.conseguir_usuarios');
@@ -38,7 +39,7 @@ Route::resource('admin', AdminController::class);
  /*Route::get('admin/usuario', [AdminController::class,'admin.lista_usuarios'])->name('admin.lista_usuarios');*/
  Route::get('formularios/actualizar', [FormularioController::class,'asignar_adopcion'])->name('formularios.asignar_adopcion');
  Route::put('formularios',[FormularioController::class,'rechazar_adopcion'])->name('formularios.rechazar_adopcion');
-
+ 
  Route::resource('formularios', FormularioController::class);
  Route::resource('mascotas', MascotasController::class);
 

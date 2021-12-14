@@ -14,6 +14,7 @@ class FormularioController extends Controller
      */
     public function index()
     {
+        if((session('rol')=='admin')){
         $formulariosPerros = DB::select("SELECT * FROM formulario_perro");
         $formulariosGatos = DB::select("SELECT * FROM formulario_gato");
         $dataFormularios=[
@@ -23,6 +24,10 @@ class FormularioController extends Controller
         ];
 
         return view('formularios', $dataFormularios);
+        }
+        else{
+            return redirect ()->route("registro.index");
+        }
     }
 
     /**

@@ -14,7 +14,7 @@ class UsuarioController extends Controller
      */
     public function index(Request $request){
         
-        
+        if((session('rol')=='usuario')){
         $mascotasTabla = DB::table("mascota")->select("*")->where("adoptado","like","no")->get();
         
         $arraySesionIniciada2 = [
@@ -23,7 +23,10 @@ class UsuarioController extends Controller
         ];
                       
         return view('usuario', $arraySesionIniciada2);
-        
+        }
+        else{
+            return redirect ()->route("registro.index");
+        }
     }
 
     /**

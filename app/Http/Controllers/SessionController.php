@@ -46,10 +46,7 @@ class SessionController extends Controller
         $usuarioNombre = $request->post("usuario");
         $usuarioContraseña=$request->post("contraseña");
         
-        $arraySesion = [
-            "usuario" => $usuarioNombre,
-            "contraseñaUsuario" => $usuarioContraseña,
-        ];
+        
 
             
             
@@ -87,6 +84,7 @@ class SessionController extends Controller
                                            ];*/
 
                                 /*return view('admin' , $arraySesion);*/
+                                session(['rol' => 'admin']);
                                 return redirect ()->route("admin.index");
                          
                         }  /*cierro el if*/  
@@ -104,7 +102,8 @@ class SessionController extends Controller
                     "pass" => $usuarioContraseña,
                     "usuariotabla"=>$candidato->alias,             No es necesario
                     "usuariopassword"=>$candidato->contrasena
-                               ];      */                                        /*Si el usuario y la pass son validos*/    
+                               ];      */                                        /*Si el usuario y la pass son validos*/ 
+                    session(['rol' => 'usuario']);           
                     return redirect ()->route("usuario.index"); /*Redirecciono al metodo index del controlador usuario*/
                 }
             }  
