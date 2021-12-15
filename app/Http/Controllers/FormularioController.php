@@ -39,9 +39,14 @@ class FormularioController extends Controller
     {
         //
     }
-    public function asignar_adopcion(){
+    public function usuario_mascota(Request $request){
+        $idMascota=$request->get("mascota");
+        $idUsuario=$request->get("usuario");
 
 
+
+        
+        return view("tabla_usuario_mascota");
     }
     /**
      * Store a newly created resource in storage.

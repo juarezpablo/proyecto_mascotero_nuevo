@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formularios</title>
 </head>
@@ -18,6 +19,7 @@
                         <th>Donde dormira</th>
                         <th>Opinion cachorros</th>
                         <th>Estado de la adopcion</th>
+                        <th>Mascota ID</th>
                         <th>Adopción</th>
                         <th>Info Mascota/Usuario</th>
                         
@@ -33,6 +35,7 @@
                         <td>{{ $formulario->donde_dormira }}</td>
                         <td>{{ $formulario->opinion_cachorros_energia_romper }}</td>
                         <td>{{ $formulario->proceso_adopcion }}</td>
+                        <td>{{ $formulario->id_mascota }}</td>
                         
                         {{--Campo invisible,cada boton Asgnar va a ser un metodo put a la ruta formularios
                             con el parametro id_formulario para luego modificar un atributo en la base de datos--}}
@@ -44,23 +47,26 @@
 
                         <td>
                             <form action="{{ route('formularios.update',$id_usuariox) }}" method="POST">
-                            <input type="hidden" name="_method" value="PUT">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
-                            <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
-                            <button type="submit" value="Asignar" class="btn-success">Asignar</button>
+                                <input type="hidden" name="_method" value="PUT">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
+                                <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
+                                <button type="submit" value="Asignar" class="btn-success">Asignar</button>
                             
                             </form>
                             <form action="{{ route('formularios.rechazar_adopcion',$id_usuariox) }}" method="POST">
-                            <input type="hidden" name="_method" value="PUT">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
-                            <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
-                            <button type="submit"  value="Rechazar" class="btn-success">Rechazar</button>
+                                <input type="hidden" name="_method" value="PUT">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
+                                <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
+                                <button type="submit"  value="Rechazar" class="btn-danger">Rechazar</button>
                             
                             </form>
                         </td>
                         <td>
+                           <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" >Ver Usuario/Mascota</a>
+                          
+                        
                         </td>   
 
                     </tr>

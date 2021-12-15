@@ -33,11 +33,12 @@ Route::resource('/registro',RegistroController::class);
 
 Route::resource('usuario', UsuarioController::class);
 Route::get('admin/usuario', [AdminController::class,'conseguir_usuarios'])->name('admin.conseguir_usuarios');
+
 Route::resource('admin', AdminController::class);
 
 /* Route::get('/usuario/{$usuarioParametro}', 'UsuarioController@index')->name('usuario');*/
  /*Route::get('admin/usuario', [AdminController::class,'admin.lista_usuarios'])->name('admin.lista_usuarios');*/
- Route::get('formularios/actualizar', [FormularioController::class,'asignar_adopcion'])->name('formularios.asignar_adopcion');
+ Route::get('formularios/relacion', [FormularioController::class,'usuario_mascota'])->name('formularios.usuario_mascota');
  Route::put('formularios',[FormularioController::class,'rechazar_adopcion'])->name('formularios.rechazar_adopcion');
  
  Route::resource('formularios', FormularioController::class);
