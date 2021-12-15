@@ -15,15 +15,15 @@ class FormularioController extends Controller
     public function index()
     {
         if((session('rol')=='admin')){
-        $formulariosPerros = DB::select("SELECT * FROM formulario_perro");
-        $formulariosGatos = DB::select("SELECT * FROM formulario_gato");
-        $dataFormularios=[
+             $formulariosPerros = DB::select("SELECT * FROM formulario_perro");
+            $formulariosGatos = DB::select("SELECT * FROM formulario_gato");
+            $dataFormularios=[
             "formulariosPerro" => $formulariosPerros,
             "formulariosGato" => $formulariosGatos
-           /* "ids"=> $formulariosPerros->$id_formulario_perro,*/
-        ];
-
-        return view('formularios', $dataFormularios);
+           
+               ];
+            /*Envio los datos de las tablas formulario gato y perro a la view */   
+            return view('formularios', $dataFormularios);
         }
         else{
             return redirect ()->route("registro.index");
