@@ -13,7 +13,7 @@ class MascotasController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
