@@ -52,8 +52,8 @@
                         <td>{{ $formulario->pileta_cercada }}</td>
                         <td>{{ $formulario->donde_dormira }}</td>
                         <td>{{ $formulario->opinion_cachorros_energia_romper }}</td>
-                        <td>{{ $formulario->proceso_adopcion }}</td>
-                        <td>{{ $formulario->id_mascota }}</td>
+                        <th>{{ $formulario->proceso_adopcion }}</th>
+                        <th>{{ $formulario->id_mascota }}</th>
                         <td>{{ $formulario->id_usuario }}</td>
                         
                         {{--Campo invisible,cada boton Asignar va a ser un metodo put al metodo update del formulario controler
