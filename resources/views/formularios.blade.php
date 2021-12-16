@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../resources/js/formularios.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formularios</title>
 </head>
 <body>
         <div> <h1>Formularios Perros</h1>
-            <table class="table">
-                <thead>
+            <table class="table   table-hover ">
+                <thead class="thead-dark">
                     <tr>
+                        <th>#</th>
                         <th>Fecha</th>
                         <th>Proteccion Balcon</th>
                         <th>pileta cercada</th>
@@ -28,7 +30,8 @@
                 </thead>
                 <tbody>
                     @foreach ($formulariosPerro as $formulario)
-                    <tr>
+                    <tr >
+                        <th scope="row">{{$formulario->id_formulario_perro}}</th>
                         <td>{{ $formulario->fecha }}</td>
                         <td>{{ $formulario->proteccion_balcon }}</td>
                         <td>{{ $formulario->pileta_cercada }}</td>
@@ -64,9 +67,11 @@
                             </form>
                         </td>
                         <td>
+                            
                            <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" >Ver Usuario/Mascota</a>
-                          
-                        
+                          {{--Tratando de reemplazar el tag a por un boton y usar la funcion window.open de js para abrir una ventana nueva
+                           en vez de una pestaña nueva, pero no logro hacerlo funcionar--}}
+                           <button type="button" id="boton_relacion"> Boton </button>
                         </td>   
 
                     </tr>

@@ -131,12 +131,22 @@ class FormularioController extends Controller
     {
         $id_form_perro= $request->post("id_formulariox");
         $id_form_mascota=$request->post("id_mascotax");
-        DB::insert("UPDATE `proyecto_huellitas`.`formulario_perro` SET `proceso_adopcion` = 'rechazado' WHERE (`id_formulario_perro` = '$id_form_perro')");   
-        
-        
-        DB::insert("UPDATE `proyecto_huellitas`.`mascota` SET `adoptado` = 'no' WHERE (`id_mascota` = '$id_form_mascota')");
+         /*Proceso de verificacion de rechazo de adopcion, para que no se pueda rechazar una adopcion ya asignada
+         El siguiente codigo verifica que solo se produzca el rechazo cuando el atributo "proceso_adopcion sea "solicitado"*/   
+        $tabla_formularios=DB::select("SELECT * FROM formulario_perro");
+        foreach($tabla_formularios as $formulario){
+            if($formulario->id_formulario_perro == $id_form_perro && $formulario->proceso_adopcion == "solicitado"){
 
-        return redirect ()->route("formularios.index");
+
+                DB::insert("UPDATE `proyecto_huellitas`.`formulario_perro` SET `proceso_adopcion` = 'rechazado' WHERE (`id_formulario_perro` = '$id_form_perro')");   
+        
+        
+                DB::insert("UPDATE `proyecto_huellitas`.`mascota` SET `adoptado` = 'no' WHERE (`id_mascota` = '$id_form_mascota')");
+
+                return redirect ()->route("formularios.index");
+            }
+        }
+        return redirect ()->route("formularios.index");   
     }
 
 
