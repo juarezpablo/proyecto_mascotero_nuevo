@@ -42,11 +42,18 @@ class FormularioController extends Controller
     public function usuario_mascota(Request $request){
         $idMascota=$request->get("mascota");
         $idUsuario=$request->get("usuario");
-
-
+        
+        $usuarioConsulta=DB::table("usuario")->select("*")->where("id_usuario", $idUsuario)->get();
+        $mascotaConsulta=DB::table("mascota")->select("*")->where("id_mascota", $idMascota)->get();
+        
+        
+        $datosConsulta=[
+          "datosUsuario"=>  $usuarioConsulta,
+           "datosMascota"=> $mascotaConsulta
+        ];
 
         
-        return view("tabla_usuario_mascota");
+        return view("tabla_usuario_mascota",$datosConsulta);
     }
     /**
      * Store a newly created resource in storage.

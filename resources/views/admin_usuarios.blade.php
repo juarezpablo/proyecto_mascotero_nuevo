@@ -10,11 +10,12 @@
 <body>
 
     <h1>Vista de lista de usuarios</h1>
-    <table>
-        <thead>
+    <table class="table ">
+        <thead class="thead-dark" >
             <tr>
-                <th>Alias</th>
-                <th>Contraseña</th>
+                <th>ID</th>
+                <th class="">Alias</th>
+                <th class="">Contraseña</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                     
@@ -22,11 +23,12 @@
         </thead>
         <tbody>
             @foreach ($Tabla as $usuario)
-            <tr>
-                 <td>{{ $usuario->alias }}</td>
-                <td>{{ $usuario->contrasena }}</td>
-                 <td>{{ $usuario->nombre }}</td>
-                <td>{{ $usuario->apellido }}</td>
+            <tr class="">
+                <th scope="row">{{$usuario->id_usuario}}</th>
+                 <td class="">{{ $usuario->alias }}</td>
+                <td >{{ $usuario->contrasena }}</td>
+                 <td >{{ $usuario->nombre }}</td>
+                <td >{{ $usuario->apellido }}</td>
             </tr>
      
             @endforeach

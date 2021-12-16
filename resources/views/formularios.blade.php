@@ -10,7 +10,21 @@
     <title>Formularios</title>
 </head>
 <body>
-        <div> <h1>Formularios Perros</h1>
+
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ route('admin.index') }}">Atras</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!">adelante</a>
+        </li>
+      </ul>
+
+
+        <div> <h2>Formularios Perros</h1>
             <table class="table   table-hover ">
                 <thead class="thead-dark">
                     <tr>
@@ -22,6 +36,7 @@
                         <th>Opinion cachorros</th>
                         <th>Estado de la adopcion</th>
                         <th>Mascota ID</th>
+                        <th>Usuario ID</th>
                         <th>Adopción</th>
                         <th>Info Mascota/Usuario</th>
                         
@@ -39,9 +54,10 @@
                         <td>{{ $formulario->opinion_cachorros_energia_romper }}</td>
                         <td>{{ $formulario->proceso_adopcion }}</td>
                         <td>{{ $formulario->id_mascota }}</td>
+                        <td>{{ $formulario->id_usuario }}</td>
                         
-                        {{--Campo invisible,cada boton Asgnar va a ser un metodo put a la ruta formularios
-                            con el parametro id_formulario para luego modificar un atributo en la base de datos--}}
+                        {{--Campo invisible,cada boton Asignar va a ser un metodo put al metodo update del formulario controler
+                            con el parametro id_formulario e id mascota, para luego modificar un atributo en la base de datos--}}
                         
                         @php   (   $id_usuariox=$formulario->id_usuario)
                           
@@ -68,7 +84,7 @@
                         </td>
                         <td>
                             
-                           <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" >Ver Usuario/Mascota</a>
+                           <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" class="" >Ver Usuario/Mascota</a>
                           {{--Tratando de reemplazar el tag a por un boton y usar la funcion window.open de js para abrir una ventana nueva
                            en vez de una pestaña nueva, pero no logro hacerlo funcionar--}}
                            <button type="button" id="boton_relacion"> Boton </button>
@@ -84,7 +100,7 @@
         <br><br><br>
         
         
-        <div> <h1>Formularios Gatos</h1>
+        <div> <h2>Formularios Gatos</h1>
             <table class="table">
                 <thead>
                     <tr>
