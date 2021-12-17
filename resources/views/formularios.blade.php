@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../resources/js/formularios.js"></script>
+    <script src="{{asset('/js/formularios.js')}}"></script>
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formularios</title>
 </head>
@@ -39,8 +40,8 @@
                         <th>Usuario ID</th>
                         <th>Adopción</th>
                         <th>Info Mascota/Usuario</th>
-                        
-                            
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -55,14 +56,14 @@
                         <th>{{ $formulario->proceso_adopcion }}</th>
                         <th>{{ $formulario->id_mascota }}</th>
                         <td>{{ $formulario->id_usuario }}</td>
-                        
+
                         {{--Campo invisible,cada boton Asignar va a ser un metodo put al metodo update del formulario controler
                             con el parametro id_formulario e id mascota, para luego modificar un atributo en la base de datos--}}
-                        
+
                         @php   (   $id_usuariox=$formulario->id_usuario)
-                          
-                          
-                        
+
+
+
 
                         <td>
                             <form action="{{ route('formularios.update',$id_usuariox) }}" method="POST">
@@ -71,7 +72,7 @@
                                 <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
                                 <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
                                 <button type="submit" value="Asignar" class="btn-success">Asignar</button>
-                            
+
                             </form>
                             <form action="{{ route('formularios.rechazar_adopcion',$id_usuariox) }}" method="POST">
                                 <input type="hidden" name="_method" value="PUT">
@@ -79,27 +80,29 @@
                                 <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_perro}}">
                                 <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
                                 <button type="submit"  value="Rechazar" class="btn-danger">Rechazar</button>
-                            
+
                             </form>
                         </td>
                         <td>
-                            
+
                            <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" class="" >Ver Usuario/Mascota</a>
                           {{--Tratando de reemplazar el tag a por un boton y usar la funcion window.open de js para abrir una ventana nueva
                            en vez de una pestaña nueva, pero no logro hacerlo funcionar--}}
+                           <input type="hidden" name="id_mascota"  id="mascotaId" value="{{$formulario->id_mascota}}">
+                           <input type="hidden" name="id_usuario" id="usuarioId" value="{{$formulario->id_usuario}}">
                            <button type="button" id="boton_relacion"> Boton </button>
-                        </td>   
+                        </td>
 
                     </tr>
-            
+
                     @endforeach
 
                 </tbody>
             </table>
         </div>
         <br><br><br>
-        
-        
+
+
         <div> <h2>Formularios Gatos</h1>
             <table class="table">
                 <thead>
@@ -113,8 +116,11 @@
                         <th>Opinion paseo gatuno callejero</th>
                         <th>Pelos/Rasguños</th>
                         <th>Proceso de Adopcion</th>
+                        <th>Mascota ID</th>
+                        <th>Usuario ID</th>
                         <th>Acciones</th>
-                            
+                        <th>Info</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -129,14 +135,63 @@
                         <td>{{ $formulario->opinion_gatos_paseen_en_calle_techo}}</td>
                         <td>{{ $formulario->pelos_rasguños }}</td>
                         <td>{{ $formulario->proceso_adopcion}}</td>
-                        
+                        <th>{{ $formulario->id_mascota }}</th>
+                        <td>{{ $formulario->id_usuario }}</td>
+
+
+
+
+                        <td>
+                            <form action="{{ route('formularios.asignar_gato') }}" method="GET">
+
+                                @csrf
+                                <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_gato}}">
+                                <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
+                                <button type="submit" value="Asignar" class="btn-success">Asignar</button>
+
+                            </form>
+                            <form action="{{ route('formularios.rechazar_gato') }}" method="GET">
+
+                                @csrf
+                                <input type="hidden" name="id_formulariox" value="{{ $formulario->id_formulario_gato}}">
+                                <input type="hidden" name="id_mascotax" value="{{$formulario->id_mascota}}">
+                                <button type="submit"  value="Rechazar" class="btn-danger">Rechazar</button>
+
+                            </form>
+                        </td>
+                        <td>
+
+                           <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" class="" >Ver Usuario/Mascota</a>
+                          {{--Tratando de reemplazar el tag a por un boton y usar la funcion window.open de js para abrir una ventana nueva
+                           en vez de una pestaña nueva, pero no logro hacerlo funcionar--}}
+                           <input type="hidden" name="id_mascota"  id="mascotaId" value="{{$formulario->id_mascota}}">
+                           <input type="hidden" name="id_usuario" id="usuarioId" value="{{$formulario->id_usuario}}">
+                           <button type="button" id="boton_relacion"> Boton </button>
+                        </td>
+
+
+
+
+
                     </tr>
-            
+
+
+
+
+
+
+
+
+
+
                     @endforeach
 
                 </tbody>
             </table>
         </div>
-    
+
+
+
+
 </body>
 </html>

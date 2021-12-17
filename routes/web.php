@@ -40,9 +40,11 @@ Route::resource('admin', AdminController::class);
  /*Route::get('admin/usuario', [AdminController::class,'admin.lista_usuarios'])->name('admin.lista_usuarios');*/
  Route::get('formularios/relacion', [FormularioController::class,'usuario_mascota'])->name('formularios.usuario_mascota');
  Route::put('formularios',[FormularioController::class,'rechazar_adopcion'])->name('formularios.rechazar_adopcion');
- 
+ Route::get('formularios/asignar',[FormularioController::class,'asignar_gato'])->name('formularios.asignar_gato');
+ Route::get('formularios/rechazar',[FormularioController::class,'rechazar_gato'])->name('formularios.rechazar_gato');
  Route::resource('formularios', FormularioController::class);
  Route::resource('mascotas', MascotasController::class);
+
 
 
 
