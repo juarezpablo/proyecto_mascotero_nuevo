@@ -24,8 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/login', [SessionController::class,'index' ]);
+Route::get('/login', [SessionController::class,'index'])->name('login.index');
 Route::post('/login', [SessionController::class,'store']);
 Route::get('/registro',[RegistroController::class,'index'] );
 Route::post('/registro',[RegistroController::class,'store' ]);

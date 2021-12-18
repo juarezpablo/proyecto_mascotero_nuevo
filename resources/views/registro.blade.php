@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Registro</title>
 </head>
-<body> 
-    <h1>Usuario incorrecto, registrese o vuelva a loguearse  </h1>
+<body>
+    <h1>Usuario incorrecto, registrese o vuelva a loguearse <a href="{{ route("login.index")}}">AQUI</a>   </h1>
     <form action="/" method="post">
     <label>Nombre</label>
     <input type="text" name="nombre">
@@ -19,12 +19,12 @@
     <label for="">password</label>
     <input type="password" name="password">
     <button type="submit">Enviar</button>
-    
-    
-    
-    
+
+
+
+
     </form>
-    
+
     <div class="card">
         <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
         <div class="card-body">
@@ -36,8 +36,8 @@
           <a href="#!" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
-      
-    
-    
+
+
+
 </body>
 </html>
