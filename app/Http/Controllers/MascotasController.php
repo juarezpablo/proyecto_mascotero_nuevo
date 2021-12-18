@@ -79,10 +79,13 @@ class MascotasController extends Controller
             "id_moderador" => "1",
         ]);
 
+        $tablaMascotas=DB::select("SELECT * FROM mascota");
+        $parametroMascotas=[
+            "Mascotas" => $tablaMascotas
+        ];
 
 
-
-        return response()->json("todo ok",200);
+        return response()->json($parametroMascotas);
 
     }
 

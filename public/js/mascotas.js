@@ -9,26 +9,32 @@ $(document).ready(()=>{
         //escondo el formulario de mascotas
     $("#form-ingreso-mascota").hide();
 
+
+    //BOTON INGRESAR MASCOTA
     $("#ingresoMascota").click(() =>{
         $("#form-ingreso-mascota").show();
          //   $("#tabla_primigenia").hide();
-         $("#boton_cargar").on();
+    /*     $("#boton_cargar").on();*/
         $("#tabla_primigenia").css({"opacity":"0.4","pointer-events" : "none"});
       //  $("#tabla_primigenia").find("*").prop('disabled',true);
         $("#ingresoMascota").hide();
 
     });
 
+
+     //BOTON CERRAR FORMULARIO
     $("#boton_escape").click((e)=>{
         e.preventDefault();
-        alert("quepasa");
-        $("#boton_cargar").off();
+
+     /*   $("#boton_cargar").off();*/
         $("#form-ingreso-mascota").hide();
         $("#tabla_primigenia").show();
         $("#tabla_primigenia").css({"opacity":"1","pointer-events" : "auto"});
         $("#ingresoMascota").show();
     });
 
+
+    //ENVIO DE FORMULARIO
     $("#boton_cargar").click((evento) => {
         evento.preventDefault();
 
