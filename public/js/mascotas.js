@@ -12,13 +12,13 @@ $(document).ready(()=>{
     $("#ingresoMascota").click(() =>{
         $("#form-ingreso-mascota").show();
          //   $("#tabla_primigenia").hide();
-        // $("#boton_cargar").on();
+         $("#boton_cargar").on();
         $("#tabla_primigenia").css({"opacity":"0.4","pointer-events" : "none"});
       //  $("#tabla_primigenia").find("*").prop('disabled',true);
         $("#ingresoMascota").hide();
 
     });
-/*
+
     $("#boton_escape").click((e)=>{
         e.preventDefault();
         alert("quepasa");
@@ -28,7 +28,7 @@ $(document).ready(()=>{
         $("#tabla_primigenia").css({"opacity":"1","pointer-events" : "auto"});
         $("#ingresoMascota").show();
     });
-*/
+
     $("#boton_cargar").click((evento) => {
         evento.preventDefault();
 
@@ -85,7 +85,6 @@ $(document).ready(()=>{
 
 
     });
-
 
 
 
