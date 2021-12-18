@@ -1,0 +1,27 @@
+#form-ingreso-mascota{
+    position: fixed;
+
+    background: white;
+    box-sizing: border-box;
+    width: 55%;
+    height:765px;
+    right: 40%;
+    top: 0%;
+    z-index: 1;
+    border-radius: 100px;
+    border-style: solid;
+    border-color: black;
+
+
+
+}
+#form-ingreso-mascota *{
+    margin-left: 50px;
+    padding: 10px;
+    align-content: center;
+}
+
+#boton_escape{
+    position: relative;
+    margin-right: 0%;
+}

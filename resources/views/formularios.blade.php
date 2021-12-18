@@ -85,7 +85,7 @@
                         </td>
                         <td>
 
-                           <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" class="" >Ver Usuario/Mascota</a>
+                           <a href="formularios/relacion?usuario={{$formulario->id_usuario}}&mascota={{$formulario->id_mascota}}"    target="_blank" class="" id="pepe">Ver Usuario/Mascota</a>
                           {{--Tratando de reemplazar el tag a por un boton y usar la funcion window.open de js para abrir una ventana nueva
                            en vez de una pestaña nueva, pero no logro hacerlo funcionar--}}
                            <input type="hidden" name="id_mascota"  id="mascotaId" value="{{$formulario->id_mascota}}">
