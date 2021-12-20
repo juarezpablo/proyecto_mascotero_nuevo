@@ -135,4 +135,17 @@ class MascotasController extends Controller
       /*  DB::delete("UPDATE `proyecto_huellitas`.`mascota` DELETE ")*/
         return redirect ()->route("mascotas.index");
     }
+
+    public function adopta()
+    {
+
+        $mascotasEnAdopcionQuery=DB::select("SELECT * FROM mascota
+                                    INNER JOIN ubicacion
+                                    on mascota.id_ubicacion=ubicacion.id_ubicacion
+                                    WHERE adoptado='no'");
+                    $mascotasEnAdopcion=[
+                        "mascotasEnAdopcion" => $mascotasEnAdopcionQuery,
+                         ];
+       return view('adopta', $mascotasEnAdopcion);
+    }
 }

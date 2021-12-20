@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <title>Inicio de Sesión</title>
-</head>
+
+@include('head')
+
 <body>
 
-    <div id="formulario">
-        <h3>   Inicio de Sesión</h3>
-        <form class="" method="POST" >
-            @csrf
-            <input type="text" placeholder="Ingrese usuario" name="usuario" id="usuario" required>
-            <input type="text" placeholder="Ingrese password" name="contraseña"  id="contraseña">
-            <button type="submit">Ingresar</button>
-            <!--     <p class="message">Not registered? <a href="#">Create an account</a></p> -->
-        </form>
-    </div>
+  @include('header')
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" style="margin-bottom: 10px;">
+        <div class="hero-container" data-aos="fade-up" id="login">
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+
+                    <div class="fadeIn first">
+                        <img src="{{asset('public/img/logo_solo.png')}}" id="icon" alt="User Icon m-5" style="width: 250px;" />
+                    </div>
+                    <form method="POST">
+                        @csrf
+                        <input type="text" id="usuario" class="fadeIn second" name="usuario" placeholder="Usuario">
+                        <input type="password" id="contraseña" class="fadeIn third" name="contraseña" placeholder="Contraseña">
+                        <button type="submit"  class="fadeIn fourth">Ingresar</button>
+                        <!--     <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    @include('footer')
+
+
+
 </body>
+
 </html>

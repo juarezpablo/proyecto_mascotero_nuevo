@@ -20,9 +20,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Home
+Route::get('/index', function () {
+    return view('index');
 });
+Route::get('/', function () {
+    return view('index');
+});
+
+
+// Sección adopta
+Route::get('/adopta', [MascotasController::Class, 'adopta']);
+
+// Sección transito
+Route::get('/transito',  function () {
+    return view('transito');
+});
+
+
+// Sección donacion
+Route::get('/dona',  function () {
+    return view('dona');
+});
+
+
+
+
+
 
 Route::get('/login', [SessionController::class,'index'])->name('login.index');
 Route::post('/login', [SessionController::class,'store']);
@@ -44,8 +68,6 @@ Route::resource('admin', AdminController::class);
 
  Route::resource('formularios', FormularioController::class);
  Route::resource('mascotas', MascotasController::class);
-
-
 
 
 
