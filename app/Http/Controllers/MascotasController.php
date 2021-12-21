@@ -126,7 +126,6 @@ class MascotasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
@@ -136,6 +135,12 @@ class MascotasController extends Controller
         return redirect ()->route("mascotas.index");
     }
 
+    /**
+     * Return all pets for adoption
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function adopta()
     {
 
@@ -143,9 +148,6 @@ class MascotasController extends Controller
                                     INNER JOIN ubicacion
                                     on mascota.id_ubicacion=ubicacion.id_ubicacion
                                     WHERE adoptado='no'");
-                    $mascotasEnAdopcion=[
-                        "mascotasEnAdopcion" => $mascotasEnAdopcionQuery,
-                         ];
-       return view('adopta', $mascotasEnAdopcion);
+        return view('adopta', ['mascotasEnAdopcion' => $mascotasEnAdopcionQuery]);
     }
 }

@@ -9,6 +9,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,13 +46,14 @@ Route::get('/dona',  function () {
     return view('dona');
 });
 
+// Sección de login
+Route::get('/login',[LoginController::class, 'login'])->name('login');
+Route::post('/login',[LoginController::class, 'ingresar']);
 
 
 
 
 
-Route::get('/login', [SessionController::class,'index'])->name('login.index');
-Route::post('/login', [SessionController::class,'store']);
 Route::get('/registro',[RegistroController::class,'index'] );
 Route::post('/registro',[RegistroController::class,'store' ]);
 Route::resource('/registro',RegistroController::class);

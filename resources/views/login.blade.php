@@ -18,9 +18,14 @@
                     <form method="POST">
                         @csrf
                         <input type="text" id="usuario" class="fadeIn second" name="usuario" placeholder="Usuario">
-                        <input type="password" id="contraseña" class="fadeIn third" name="contraseña" placeholder="Contraseña">
+                        <input type="password" id="contrasena" class="fadeIn third" name="contrasena" placeholder="Contraseña">
                         <button type="submit"  class="fadeIn fourth">Ingresar</button>
                         <!--     <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+                        {{-- @if(Session:has('mensaje'))
+                        <div class="alert alert-danger">
+                            {{Session::get('mensaje')}}
+                        </div>
+                        @endif --}}
                     </form>
 
                 </div>
