@@ -14,6 +14,49 @@
 </head>
 <body>
 
+
+
+    <div id="form-ingreso-mascota" class="form_mascota">
+        <button id="boton_escape">Salir</button>
+        <form action="{{route("mascotas.store")}}" method="POST">
+            @csrf
+            <label for="">Nombre:</label><br>
+            <input type="text" name="nombre" id="nombre" placeholder="Ingrese Nombre"><br>
+            <label for="">Tipo de Mascota:</label><br>
+         {{--  <input type="radio" name="tipo_mascota" id="" value="gato" checked> Gato
+             <input type="radio" name="tipo_mascota" value="perro">Perro<br>
+         --}}
+         <select name="tipo_mascota" id="tipo_mascota">
+            <option>gato</option>
+            <option>perro</option>
+
+          </select>
+            <label for="">Sexo:</label><br>
+        {{--    <input type="radio" name="sexo" value="macho" checked> Macho
+            <input type="radio" name="sexo" value="hembra">Hembra <br>
+          --}}
+            <select name="sexo" id="sexo">
+                <option>macho</option>
+                <option>hembra</option>
+            </select>
+            <label for="">Edad :</label><br>
+            <input type="number" name="edad" placeholder="Ingrese Edad" id="edad"><br>
+            <input type="checkbox" name="desparasitado"  id="desparasitado" >Desparasitado<br>
+            <input type="checkbox" name="castrado"  id="castrado">Castrado<br>
+            <input type="checkbox" name="vacunado"  id="vacunado">Vacunado<br>
+            <input type="file" id="imagen_cargada"  >
+            <img src=""  height="200" id="imagen_prueba" alt="Image preview..." >
+            <label for="">Observaciones :</label><br>
+            <textarea name="observaciones" rows="10" cols="50" id="observaciones" placeholder="Informacion adicional de la mascota"></textarea><br>
+            <button type="submit" value="Asignar" class="" id="boton_cargar">Cargar</button>
+
+        </form>
+
+    </div>
+
+
+
+
     view mascotas
     <table class="table" id="tabla_primigenia">
         <thead>
@@ -70,50 +113,39 @@
                         <input type="hidden" name="id_mascota"  id="mascotaId" value="{{$mascota->id_mascota}}">
                         <button type="button" id="boton_relacion"> Boton </button>
                     </td>
+
+
+                    <td> <img src="{{$mascota->imagen_1}}" alt=""> </td>
             </tr>
             @endforeach
 
         </tbody>
     </table>
 
-    <div id="form-ingreso-mascota">
-        <button id="boton_escape">Salir</button>
-        <form action="{{route("mascotas.store")}}" method="POST">
-            @csrf
-            <label for="">Nombre:</label><br>
-            <input type="text" name="nombre" id="nombre" placeholder="Ingrese Nombre"><br>
-            <label for="">Tipo de Mascota:</label><br>
-         {{--  <input type="radio" name="tipo_mascota" id="" value="gato" checked> Gato
-             <input type="radio" name="tipo_mascota" value="perro">Perro<br>
-         --}}
-         <select name="tipo_mascota" id="tipo_mascota">
-            <option>gato</option>
-            <option>perro</option>
 
-          </select>
-            <label for="">Sexo:</label><br>
-        {{--    <input type="radio" name="sexo" value="macho" checked> Macho
-            <input type="radio" name="sexo" value="hembra">Hembra <br>
-          --}}
-            <select name="sexo" id="sexo">
-                <option>macho</option>
-                <option>hembra</option>
-            </select>
-            <label for="">Edad :</label><br>
-            <input type="number" name="edad" placeholder="Ingrese Edad" id="edad"><br>
-            <input type="checkbox" name="desparasitado"  id="desparasitado" >Desparasitado<br>
-            <input type="checkbox" name="castrado"  id="castrado">Castrado<br>
-            <input type="checkbox" name="vacunado"  id="vacunado">Vacunado<br>
-            <label for="">Observaciones :</label><br>
-            <textarea name="observaciones" rows="10" cols="50" id="observaciones">Informacion adicional de la mascota</textarea><br>
-            <button type="submit" value="Asignar" class="" id="boton_cargar">Cargar</button>
-
-        </form>
-
-    </div>
+<br><br>
 <button id="ingresoMascota">Ingresar Mascota</button>
+<br><br><br>
+
+
+@php   ( $id_tablita=json_encode($tablaMascota))
+<button id="boton_crear_tabla">Crear Tabla</button>
+
+
+<h1 id="titulo_h1">Tabla generada con jquery</h1>
+
+{{--
+;--}}
+<input type="hidden"  id="variablex">
+<span id="tablatexto" >@json($tablaMascota)</span>
+<span id="prueba">texto</span>
+
+
 
 
 
 </body>
+
+
+
 </html>

@@ -22,7 +22,10 @@ class MascotasController extends Controller
             "tablaMascota" => $tablaMascotas,
              ];
 
-           return view('mascotas', $dataMascota);
+           return view('mascotas',$dataMascota);
+           /*return response()
+            ->view('mascotas', $dataMascota)
+            ->json('dataM', $dataMascota);*/
        }
        else{
            return redirect ()->route("registro.index");
@@ -55,6 +58,16 @@ class MascotasController extends Controller
         $vacunado=$request->post("vacunado");
         $castrado=$request->post("castrado");
         $observaciones=$request->post("observaciones");
+        $imagen_1=$request->post("imagen_1");
+      /*  Tratamiento de imagen
+        $imagen_1=$request->file("imagen_1");
+
+        $nombreImagen =  time()."_".$imagen_1->getClientOriginalName();
+        $destino= public_path('img');
+        $imagen_1->move($destino,$nombreImagen);*/
+
+
+
 
         var_dump($castrado);
 
@@ -66,7 +79,7 @@ class MascotasController extends Controller
             "desparasitado" => $desparasitado,
             "castrado" => $castrado,
             "vacunado" => $vacunado,
-            "imagen_1" => "1",
+            "imagen_1" => $imagen_1,
             "imagen_2" => "2",
             "imagen_3" => "3",
             "imagen_4" => "4",
@@ -85,7 +98,8 @@ class MascotasController extends Controller
         ];
 
 
-        return response()->json($parametroMascotas);
+      return response()->json($parametroMascotas,200);
+        /*return redirect()->route("mascotas.index");*/
 
     }
 
@@ -132,7 +146,7 @@ class MascotasController extends Controller
     public function destroy(Request $request)
     {
         $id_mascotaEliminar=$request->get("id_mascotax");
-      /*  DB::delete("UPDATE `proyecto_huellitas`.`mascota` DELETE ")*/
+        DB::table("mascota")->select("*")->where("id_mascota",$id_mascotaEliminar)->delete();
         return redirect ()->route("mascotas.index");
     }
 }
