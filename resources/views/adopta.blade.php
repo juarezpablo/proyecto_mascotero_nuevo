@@ -1,10 +1,10 @@
 @extends('principal')
 
 @section('contenido')
-<section class="adopcion d-flex mt-5">
+<section class="adopcion d-flex mt-5" >
     <div class="grid d-flex" id="grid">
-        <div class="row d-flex justify-content-center" id="adopta">
-            <h1 class="col-mt-5 mb-5 offset-2">Adopta a tu mascota</h1>
+        <div class="row d-flex justify-content-center" id="adopta" >
+            <h1 class="col-mt-5 mb-5 offset-2">Adopta a tu mascota {{session('alias')}}</h1>
 
                         @foreach ($mascotasEnAdopcion as $mascotaEnAdopcion)
 

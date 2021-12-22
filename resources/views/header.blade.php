@@ -16,7 +16,12 @@
           <li><a class="nav-link scrollto" href="dona#dona">Dona</a></li>
           <li><a class="nav-link scrollto" href="index#adoptados">Adoptados</a></li>
           <li><a class="nav-link scrollto" href="#contacto">Contactanos</a></li>
-          <li><a class="nav-link scrollto" href="login">Login</a></li>
+          @if (!session('alias'))
+            <li><a class="nav-link scrollto" href="login" id="login">Login</a></li>
+          @else
+            <li><a class="nav-link scrollto" href="logout"  id="logout">Logout</a></li>
+          @endif
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

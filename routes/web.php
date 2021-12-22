@@ -48,7 +48,10 @@ Route::get('/dona',  function () {
 
 // Sección de login
 Route::get('/login',[LoginController::class, 'login'])->name('login');
+// Ruta para validar las credencilaes enviadas por el formulario de login
 Route::post('/login',[LoginController::class, 'ingresar']);
+// Ruta para cerrar sesión
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 
 
