@@ -224,18 +224,6 @@
       once: true,
       mirror: false
     });
-    let spanRange = document.getElementById('formEdadSpan');
-    spanRange.innerHTML = inputRange.value;
+
+    document.getElementById('formEdadSpan').innerHTML=document.getElementById('formEdadInputRange').value;
   });
-
-  let inputRange = document.getElementById('formEdadInput');
-  inputRange.addEventListener('change',(e)=>{
-    let inputRange = document.getElementById('formEdadInput');
-    let spanRange = document.getElementById('formEdadSpan');
-    if(parseInt(inputRange.value)!=parseInt(inputRange.min) && parseInt(inputRange.value)!=parseInt(inputRange.max))
-      spanRange.innerHTML = inputRange.value;
-      else if(inputRange.value==inputRange.min)
-        spanRange.innerHTML = '<= 1';
-        else spanRange.innerHTML = '>= 20';
-    });
-

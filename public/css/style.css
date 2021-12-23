@@ -836,3 +836,13 @@ padding: 0px 10px 0px 10px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.carousel-item{
+    width: 294px !important;
+    height: 294px !important;
+}
+
+.carousel-item img{
+
+    height: 100% !important;
+    object-fit: cover !important;
+}

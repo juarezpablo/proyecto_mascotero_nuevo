@@ -52,6 +52,8 @@ Route::get('/login',[LoginController::class, 'login'])->name('login');
 Route::post('/login',[LoginController::class, 'ingresar']);
 // Ruta para cerrar sesión
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+// Seccion nueva mascota, solo disponible para el admin
+Route::post('/adopta', [MascotasController::Class, 'agregarMascota'])->name('agregarMascota');
 
 
 

@@ -10,9 +10,14 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="index">Home</a></li>
+          @if(session('tipoUsuario')=='admin')
+          <li><a class="nav-link scrollto" href="adopta#adopta">Mascotas</a></li>
+          @else
           <li><a class="nav-link scrollto" href="adopta#adopta">Adopta</a></li>
+          @endif
           <li><a class="nav-link scrollto" href="transito#transito">Transito</a></li>
           <li><a class="nav-link scrollto" href="index#consejos">Consejos</a></li>
+
           <li><a class="nav-link scrollto" href="dona#dona">Dona</a></li>
           <li><a class="nav-link scrollto" href="index#adoptados">Adoptados</a></li>
           <li><a class="nav-link scrollto" href="#contacto">Contactanos</a></li>
