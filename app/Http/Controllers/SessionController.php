@@ -14,10 +14,10 @@ class SessionController extends Controller
      */
     public function index(Request $request )
     {
-        
-        
+
+
         return view("Login");
-        
+
 
     }
 
@@ -28,11 +28,11 @@ class SessionController extends Controller
      */
     public function create(Request $request)
     {
-        
+
         //
     }
 
-    
+
 
 
     /**
@@ -45,32 +45,32 @@ class SessionController extends Controller
     {   /*Recibo el usuario y la contraseña enviada desde el formulario login*/
         $usuarioNombre = $request->post("usuario");
         $usuarioContraseña=$request->post("contraseña");
-        
-        
 
-            
-            
+
+
+
+
             // Retrieve a piece of data from the session...
             /*$pepito = session('key');*/
-        
+
             // Specifying a default value...
             /*$pepito = session('key', 'usuarioNombre');*/
-        
+
             // Store a piece of data in the session...
 
             session(['alias' => $usuarioNombre]);
             session(['pass'=> $usuarioContraseña]);
-        
 
-            /*cargo la tabla admin, para comparar con el usuario ingresado, si es valido lo manda a una vista admin*/ 
+
+            /*cargo la tabla admin, para comparar con el usuario ingresado, si es valido lo manda a una vista admin*/
          $adminsTabla = DB::select("SELECT * FROM moderador");
              /*recorro la tabla admin y lo guardo en el objeto usuario, cada objeto usuario tiene un atributo nombre, password etc*/
 
-            foreach ( $adminsTabla  as $admin ){ 
-            
-                 
-                     if (( $admin->alias == $usuarioNombre) && ($admin->contrasena == $usuarioContraseña)){   
-        
+            foreach ( $adminsTabla  as $admin ){
+
+
+                     if (( $admin->alias == $usuarioNombre) && ($admin->contrasena == $usuarioContraseña)){
+
                                 var_dump($admin->contrasena);
                                 var_dump($admin->alias);
                                 /*
@@ -80,14 +80,14 @@ class SessionController extends Controller
                                 /*
                                 "aliasAdmin"=>$admin->alias,
                                 "contrasenaAdmin"=>$admin->contrasena
-                                
+
                                            ];*/
 
                                 /*return view('admin' , $arraySesion);*/
                                 session(['rol' => 'admin']);
                                 return redirect ()->route("admin.index");
-                         
-                        }  /*cierro el if*/  
+
+                        }  /*cierro el if*/
             } /*cierro el for*/
             /*Si ningun usuario ingresado pertenece a la tabla admin, ahora verifico si pertenece a la tabla usuarios*/
         $usuariosTabla = DB::select("SELECT * FROM usuario");
@@ -102,15 +102,15 @@ class SessionController extends Controller
                     "pass" => $usuarioContraseña,
                     "usuariotabla"=>$candidato->alias,             No es necesario
                     "usuariopassword"=>$candidato->contrasena
-                               ];      */                                        /*Si el usuario y la pass son validos*/ 
-                    session(['rol' => 'usuario']);           
+                               ];      */                                        /*Si el usuario y la pass son validos*/
+                    session(['rol' => 'usuario']);
                     return redirect ()->route("usuario.index"); /*Redirecciono al metodo index del controlador usuario*/
                 }
-            }  
+            }
                     return view('registro');
-                
-            
-             
+
+
+
     }
 
     /**

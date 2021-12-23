@@ -9,6 +9,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,12 +23,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home
+Route::get('/index', function () {
+    return view('index');
+});
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::get('/login', [SessionController::class,'index'])->name('login.index');
-Route::post('/login', [SessionController::class,'store']);
+
+// Sección adopta
+Route::get('/adopta', [MascotasController::Class, 'adopta']);
+
+// Sección transito
+Route::get('/transito',  function () {
+    return view('transito');
+});
+
+
+// Sección donacion
+Route::get('/dona',  function () {
+    return view('dona');
+});
+
+// Sección de login
+Route::get('/login',[LoginController::class, 'login'])->name('login');
+// Ruta para validar las credencilaes enviadas por el formulario de login
+Route::post('/login',[LoginController::class, 'ingresar']);
+// Ruta para cerrar sesión
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+// Seccion nueva mascota, solo disponible para el admin
+Route::post('/adopta', [MascotasController::Class, 'agregarMascota'])->name('agregarMascota');
+
+
+
+
+
 Route::get('/registro',[RegistroController::class,'index'] );
 Route::post('/registro',[RegistroController::class,'store' ]);
 Route::resource('/registro',RegistroController::class);
@@ -44,8 +77,6 @@ Route::resource('admin', AdminController::class);
 
  Route::resource('formularios', FormularioController::class);
  Route::resource('mascotas', MascotasController::class);
-
-
 
 
 
