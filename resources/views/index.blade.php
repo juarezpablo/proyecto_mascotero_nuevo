@@ -2,6 +2,7 @@
 
 @section('contenido')
       <!-- ======= Requisitos ======= -->
+      <span id='sect'></span>
       <section id="requisitos" class="requisitos">
         <div class="container">
 

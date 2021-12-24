@@ -7,7 +7,35 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use File;
 use Illuminate\Support\Str;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
+
+
+/**
+ * Guarda una imagen en un fichero. Recibe el atributo name del input
+ * type=file. Retorna el nombre del archivo.
+ * @param  string  $formName
+ * @return string fileName
+ */
+function guardarImagen(Request $request, $formName){
+    // ===== Almacenamiento de la imagen =====
+    $file = $request->file($formName);
+    if(is_null($file))
+        return NULL;
+        else{
+            // Obtengo el nombre del archivo
+            $formImagen1 = $file->getClientOriginalName();
+            // Genero un inditificador unico para evitar archivos con el mismo nombre
+            $imgAux =  Str::uuid()->toString() . $formImagen1;
+            // Almaceno en el disco la imagen
+            Storage::disk('local')->put($imgAux, File::get($file));
+            // Retorno nombre del archivo
+            return ($imgAux);
+        }
+}
 
 class MascotasController extends Controller
 {
@@ -96,80 +124,33 @@ class MascotasController extends Controller
     // Cumple la funcion de store, almacena una nueva mascota en adopcion
     public function agregarMascota(Request $request){
         $this->validate($request, [
-            'formTipoMascota'=>'required',
-            'formSexo'=>'required',
-            'formEdadInputRange'=>'required',
-            'formNombre'=>'required',
-            'formImagen1' => 'image|mimes:jpg,png',
+            'tipoMascota'=>'required',
+            'sexo'=>'required',
+            'edadInputRange'=>'required',
+            'nombre'=>'required',
+            'imagen1' => 'required|image|mimes:jpg,png',
             // Excluye la verificación si es que formImage1 existe
-            'formImagen2' => 'exclude_if:formImagen1,true|image|mimes:jpg,jpeg,png',
-            'formImagen3' => 'exclude_if:formImagen1,true|image|mimes:jpg,jpeg,png',
-            'formImagen4' => 'exclude_if:formImagen1,true|image|mimes:jpg,jpeg,png',
-            'formImagen5' => 'exclude_if:formImagen1,true|image|mimes:jpg,jpeg,png',
-            'formLocalidad' => 'required',
+            'imagen2' => 'image|mimes:jpg,jpeg,png',
+            'imagen3' => 'image|mimes:jpg,jpeg,png',
+            'imagen4' => 'image|mimes:jpg,jpeg,png',
+            'imagen5' => 'image|mimes:jpg,jpeg,png',
+            'localidad' => 'required',
+            'barrio' => Rule::requiredIf($request->localidad=='c.a.b.a.'),
         ]);
+        $img1 = guardarImagen($request,'imagen1');
+        $img2 = guardarImagen($request,'imagen2');
+        $img3 = guardarImagen($request,'imagen3');
+        $img4 = guardarImagen($request,'imagen4');
+        $img5 = guardarImagen($request,'imagen5');
 
-        // ===== Almacenamiento de la imagen 1 =====
-        $file = $request->file('formImagen1');
-        // Obtengo el nombre del archivo
-        $formImagen1 = $file->getClientOriginalName();
-        // Genero un inditificador unico para evitar archivos con el mismo nombre
-        $imgAux1 =  Str::uuid()->toString() . $formImagen1;
-        // Almaceno en el disco la imagen
-        Storage::disk('local')->put($imgAux1, File::get($file));
-
-        // ===== Almacenamiento de la imagen 2 =====
-        $file = $request->file('formImagen2');
-        // Obtengo el nombre del archivo
-        $formImagen2 = $file->getClientOriginalName();
-        // Genero un inditificador unico para evitar archivos con el mismo nombre
-        $imgAux2 =  Str::uuid()->toString() . $formImagen2;
-        // Almaceno en el disco la imagen
-        Storage::disk('local')->put($imgAux2, File::get($file));
-
-        // ===== Almacenamiento de la imagen 3 =====
-        $file = $request->file('formImagen3');
-        // Obtengo el nombre del archivo
-        $formImagen3 = $file->getClientOriginalName();
-        // Genero un inditificador unico para evitar archivos con el mismo nombre
-        $imgAux3 =  Str::uuid()->toString() . $formImagen3;
-        // Almaceno en el disco la imagen
-        Storage::disk('local')->put($imgAux3, File::get($file));
-
-        // // ===== Almacenamiento de la imagen 4 =====
-        // $file = $request->file('formImagen4');
-        // // Obtengo el nombre del archivo
-        // $formImagen4 = $file->getClientOriginalName();
-        // // Genero un inditificador unico para evitar archivos con el mismo nombre
-        // $imgAux4 =  Str::uuid()->toString() . $formImagen4;
-        // // Almaceno en el disco la imagen
-        // Storage::disk('local')->put($imgAux4, File::get($file));
-
-        // // ===== Almacenamiento de la imagen 5 =====
-        // $file = $request->file('formImagen5');
-        // // Obtengo el nombre del archivo
-        // $formImagen5 = $file->getClientOriginalName();
-        // // Genero un inditificador unico para evitar archivos con el mismo nombre
-        // $imgAux5 =  Str::uuid()->toString() . $formImagen5;
-        // // Almaceno en el disco la imagen
-        // Storage::disk('local')->put($imgAux5, File::get($file));
-
-        // ===== Inserción de datos en la base de datos =====
-        // INSERT INTO `proyecto_huellitas`.`mascota` (`tipo_mascota`, `nombre`, `sexo`, `edad`, `desparasitado`, `castrado`, `vacunado`, `imagen_1`, `imagen_2`, `imagen_3`, `imagen_4`, `imagen_5`, `observaciones`, `adoptado`, `fecha_adoptado`, `fecha_publicacion`, `id_moderador`, `id_ubicacion`) VALUES ('perro', 'manteca', 'macho', '1', 'si', 'no', 'no', 'img1', 'img2', 'img3', 'img4', 'img5', 'obsejemplo', 'no', '2021-12-23', '2021-12-23', '1', '25');
-
-        $tipoMascota = $request->post("formTipoMascota");
-        $nombre = $request->post("formNombre");
-        $sexo = $request->post("formSexo");
-        $edad = $request->post("formEdadInputRange");
-        $desparasitado = $request->post("formDesparasitado");
-        $castrado = $request->post("formCastrado");
-        $vacunado = $request->post("formVacunado");
-        $imagen1 = $imgAux1;
-        $imagen2 = $imgAux2;
-        $imagen3 = $imgAux3;
-        // $imagen4 = $imgAux4;
-        // $imagen5 = $imgAux5;
-        $observaciones = $request->post('formObservaciones');
+        $tipoMascota = $request->post("tipoMascota");
+        $nombre = $request->post("nombre");
+        $sexo = $request->post("sexo");
+        $edad = $request->post("edadInputRange");
+        $desparasitado = $request->post("desparasitado");
+        $castrado = $request->post("castrado");
+        $vacunado = $request->post("vacunado");
+        $observaciones = $request->post('observaciones');
         $adoptado = 'no';
         $fechaAdoptado = '';
         //$fechaPublicacion = date("Y-m-d");
@@ -184,11 +165,11 @@ class MascotasController extends Controller
             "desparasitado" => 'si',
             "castrado" => 'si',
             "vacunado" => $vacunado,
-            "imagen_1" => $imagen1,
-            "imagen_2" => $imagen2,
-            "imagen_3" => $imagen3,
-            // "imagen_4" => $imagen4,
-            // "imagen_5" => $imagen5,
+            "imagen_1" => $img1,
+            "imagen_2" => $img2,
+            "imagen_3" => $img3,
+            "imagen_4" => $img4,
+            "imagen_5" => $img5,
             "observaciones" => $observaciones,
             "adoptado" => $adoptado,
             "fecha_publicacion" => '2021-09-09',
