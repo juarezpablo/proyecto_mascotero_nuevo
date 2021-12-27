@@ -123,6 +123,36 @@
                     </div>
                 </div>
             </section>
+            <script>
+                adminCargaMascota();
+                function adminCargaMascota(){
+                    imagen1=document.getElementById("imagen1");
+                    if(imagen1){
+                        document.getElementById('edadSpan').innerHTML=document.getElementById('edadInputRange').value;
+                        document.getElementById("imagen2").disabled=true;
+                        document.getElementById("imagen3").disabled=true;
+                        document.getElementById("imagen4").disabled=true;
+                        document.getElementById("imagen5").disabled=true;
+                        imagen1.addEventListener('change',()=>{
+                            if(imagen1.value!='' && imagen1)
+                            {
+                                document.getElementById("imagen2").disabled=false;
+                                document.getElementById("imagen3").disabled=false;
+                                document.getElementById("imagen4").disabled=false;
+                                document.getElementById("imagen5").disabled=false;
+                            }
+                        })
+                        edad=document.getElementById('edadInputRange');
+                        edadSpan=document.getElementById('edadSpan');
+                        edad.addEventListener('input',()=>{
+                            if(edad.value=='0')
+                                edadSpan.innerHTML='<=1';
+                                else if(edad.value=='15')
+                                    edadSpan.innerHTML='>=15';
+                        })
+                    }
+                }
+            </script>
             @else
             <h1 class="col-mt-5 mt-5 offset-2">Adopta a tu mascota {{session('alias')}}!!</h1>
             @endif

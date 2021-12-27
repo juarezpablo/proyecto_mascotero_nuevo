@@ -9,7 +9,9 @@
     if (all) {
       return [...document.querySelectorAll(el)]
     } else {
-      return document.querySelector(el)
+        if(el){
+            return document.querySelector(el)
+        }
     }
   }
 
@@ -228,34 +230,7 @@
   });
 
 
-  adminCargaMascota();
-  function adminCargaMascota(){
-    imagen1=document.getElementById("imagen1");
-    if(imagen1){
-        document.getElementById('edadSpan').innerHTML=document.getElementById('edadInputRange').value;
-        document.getElementById("imagen2").disabled=true;
-        document.getElementById("imagen3").disabled=true;
-        document.getElementById("imagen4").disabled=true;
-        document.getElementById("imagen5").disabled=true;
-        imagen1.addEventListener('change',()=>{
-            if(imagen1.value!='' && imagen1)
-            {
-                document.getElementById("imagen2").disabled=false;
-                document.getElementById("imagen3").disabled=false;
-                document.getElementById("imagen4").disabled=false;
-                document.getElementById("imagen5").disabled=false;
-            }
-        })
-        edad=document.getElementById('edadInputRange');
-        edadSpan=document.getElementById('edadSpan');
-        edad.addEventListener('input',()=>{
-            if(edad.value=='0')
-                edadSpan.innerHTML='<=1';
-                else if(edad.value=='15')
-                    edadSpan.innerHTML='>=15';
-        })
-      }
-  }
+
 
 
 
