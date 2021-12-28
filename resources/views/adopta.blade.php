@@ -25,6 +25,7 @@
                         @endif
                         <form id="formAdoptaCrear" action="{{route('agregarMascota')}}" method="POST" enctype='multipart/form-data' >
                             @csrf
+                            <input name="ubicacion" style="display:none" value='' id='ubicacion' id_ubicacion=''>
                             <div class="d-flex justify-content-around">
                                 <select name="tipoMascota" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option value="" selected>Tipo de mascota</option>
@@ -103,18 +104,12 @@
                             </div>
 
                             <div class="d-flex">
-                                <select class="form-select form-select-lg mb-3" id="localidad" name="localidad" aria-label=".form-select-lg example">
+                                <select class="form-select form-select-lg mb-3" id="localidad" name="localidad" aria-label=".form-select-lg example" id_ubicacion="">
                                     <option value="" selected>Localidad</option>
-                                    <option value="c.a.b.a.">C.A.B.A</option>
-                                    <option value="lanus">Lanus</option>
-                                    <option value="quilmes">Quilmes</option>
                                 </select>
 
-                                <select class="form-select form-select-lg mb-3 disabled" id="barrio" name="barrio"  aria-label=".form-select-lg example">
+                                <select class="form-select form-select-lg mb-3 disabled" id="barrio" name="barrio"  aria-label=".form-select-lg example" id_ubicacion="">
                                     <option value="" selected>Barrio</option>
-                                    <option value="caballito">Caballito</option>
-                                    <option value="palermo">Palermo</option>
-                                    <option value="barracas">Barracas</option>
                                 </select>
                             </div>
                             <button type="submit"  class="fadeIn fourth">Agregar mascota</button>
@@ -123,8 +118,12 @@
                     </div>
                 </div>
             </section>
+
+            <script defer type="text/javascript" src='{{ asset('public/js/ubicaciones.js') }}'></script>
+
             <script>
                 adminCargaMascota();
+
                 function adminCargaMascota(){
                     imagen1=document.getElementById("imagen1");
                     if(imagen1){

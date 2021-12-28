@@ -134,7 +134,7 @@ class MascotasController extends Controller
             'imagen3' => 'image|mimes:jpg,jpeg,png',
             'imagen4' => 'image|mimes:jpg,jpeg,png',
             'imagen5' => 'image|mimes:jpg,jpeg,png',
-            'localidad' => 'required',
+            'ubicacion' => 'required',
             'barrio' => Rule::requiredIf($request->localidad=='c.a.b.a.'),
         ]);
         $img1 = guardarImagen($request,'imagen1');
@@ -147,14 +147,15 @@ class MascotasController extends Controller
         $nombre = $request->post("nombre");
         $sexo = $request->post("sexo");
         $edad = $request->post("edadInputRange");
-        $desparasitado = $request->post("desparasitado");
-        $castrado = $request->post("castrado");
-        $vacunado = $request->post("vacunado");
+        $desparasitado = $request->has("desparasitado");
+        $castrado = $request->has("castrado");
+        $vacunado = $request->has("vacunado");
         $observaciones = $request->post('observaciones');
         $adoptado = 'no';
-        $fechaAdoptado = '';
-        //$fechaPublicacion = date("Y-m-d");
+        $fechaAdoptado = NULL;
         $fechaPublicacion = date("Y-m-d");
+        $id_moderador = session('id');
+        $id_ubicacion = $request->post('ubicacion');
 
 
         DB::table("mascota")->insert([
@@ -162,8 +163,8 @@ class MascotasController extends Controller
             "nombre" => $nombre,
             "sexo" => $sexo,
             "edad" => $edad,
-            "desparasitado" => 'si',
-            "castrado" => 'si',
+            "desparasitado" => $desparasitado,
+            "castrado" => $castrado,
             "vacunado" => $vacunado,
             "imagen_1" => $img1,
             "imagen_2" => $img2,
@@ -172,9 +173,10 @@ class MascotasController extends Controller
             "imagen_5" => $img5,
             "observaciones" => $observaciones,
             "adoptado" => $adoptado,
-            "fecha_publicacion" => '2021-09-09',
-            "id_moderador" => session('id'),
-            "id_ubicacion" => '2',
+            "fecha_adoptado" => $fechaAdoptado,
+            "fecha_publicacion" => $fechaPublicacion ,
+            "id_moderador" => $id_moderador,
+            "id_ubicacion" => $id_ubicacion,
         ]);
 
         return redirect()->action([MascotasController::class, 'adopta'],'#adopta');
