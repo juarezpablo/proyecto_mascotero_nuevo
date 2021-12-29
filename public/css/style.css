@@ -850,3 +850,9 @@ padding: 0px 10px 0px 10px;
 .heroRegistro{
     height: 135vh !important;
 }
+#localidad{
+    font-size: 0.8rem;
+}
+#barrio{
+    font-size: 0.8rem;
+}

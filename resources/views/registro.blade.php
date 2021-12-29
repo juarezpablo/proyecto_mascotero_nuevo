@@ -29,16 +29,16 @@
                         </div>
                         @endif
 
-                        <input type="text" id="alias" class="fadeIn first" name="alias" placeholder="Usuario">
+                        <input type="text" id="alias" class="fadeIn first" name="alias" placeholder="Usuario" >
                         <input type="password" id="contrasena" class="fadeIn second"
-                            name="contrasena" placeholder="Contraseña" minlength="4" maxlength="12">
+                            name="contrasena" placeholder="Contraseña" minlength="4" maxlength="12" >
                         <input type="password" id="contrasena2" class="fadeIn third"
-                            name="contrasena2" placeholder="Repetir contraseña" minlength="4" maxlength="12">
-                        <input type="text" id="nombre" class="fadeIn fourth" name="nombre" placeholder="Nombre">
-                        <input type="text" id="apellido" class="fadeIn fourth" name="apellido" placeholder="Apellido">
-                        <input type="tel" id="telefono" class="fadeIn fourth" name="telefono" placeholder="Telefono">
+                            name="contrasena2" placeholder="Repetir contraseña" minlength="4" maxlength="12" >
+                        <input type="text" id="nombre" class="fadeIn fourth" name="nombre" placeholder="Nombre" >
+                        <input type="text" id="apellido" class="fadeIn fourth" name="apellido" placeholder="Apellido" >
+                        <input type="tel" id="telefono" class="fadeIn fourth" name="telefono" placeholder="Telefono" >
                         <div class="d-flex">
-                            <select class="form-select form-select-lg mb-3" id="localidad" name="localidad" aria-label=".form-select-lg example" id_ubicacion="">
+                            <select class="form-select form-select-lg mb-3" id="localidad" name="localidad" aria-label=".form-select-lg example" id_ubicacion="" >
                                 <option value="" selected>Localidad</option>
                             </select>
 
