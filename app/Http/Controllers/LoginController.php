@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// Para encriptar contraseñas
-use Illuminate\Support\Facates\Hash;
 // Uso de session para enviar mensajes
 use Session;
 // Uso de DB
 use Illuminate\Support\Facades\DB;
-
 
 class LoginController extends Controller
 {
@@ -66,7 +63,6 @@ class LoginController extends Controller
         Session::forget('tipoUsuario');
         Session::forget('id');
         Session::flush();
-        var_dump('afuera');
         return redirect()->route('login');
     }
 }

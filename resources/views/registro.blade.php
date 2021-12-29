@@ -1,43 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Registro</title>
-</head>
+
+@include('head')
+
 <body>
-    <h1>Usuario incorrecto, registrese o vuelva a loguearse <a href="{{ route("login.index")}}">AQUI</a>   </h1>
-    <form action="/" method="post">
-    <label>Nombre</label>
-    <input type="text" name="nombre">
-    <label>Apellido</label>
-    <input type="text" name="apellido">
-    <label for="">Email</label>
-    <input type="email" name="email">
-    <label for="">password</label>
-    <input type="password" name="password">
-    <button type="submit">Enviar</button>
 
+  @include('header')
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="heroRegistro" style="margin-bottom: 10px;">
+        <div class="hero-container" data-aos="fade-up" id="login">
+            <div class="wrapper fadeInDown">
+                <div id="formContent" class="p-2">
 
+                    <div class="fadeIn first">
+                        <img src="{{asset('public/img/logo_solo.png')}}" id="icon" alt="User Icon m-5" style="width: 250px;" />
+                    </div>
+                    <form method="POST" id="formLogin">
+                        @csrf
 
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <h6>Por favor corrige los errores:</h6>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
 
-    </form>
+                        <input type="text" id="alias" class="fadeIn first" name="alias" placeholder="Usuario" >
+                        <input type="password" id="contrasena" class="fadeIn second"
+                            name="contrasena" placeholder="Contraseña" minlength="4" maxlength="12" >
+                        <input type="password" id="contrasena2" class="fadeIn third"
+                            name="contrasena2" placeholder="Repetir contraseña" minlength="4" maxlength="12" >
+                        <input type="text" id="nombre" class="fadeIn fourth" name="nombre" placeholder="Nombre" >
+                        <input type="text" id="apellido" class="fadeIn fourth" name="apellido" placeholder="Apellido" >
+                        <input type="tel" id="telefono" class="fadeIn fourth" name="telefono" placeholder="Telefono" >
+                        <div class="d-flex">
+                            <select class="form-select form-select-lg mb-3" id="localidad" name="localidad" aria-label=".form-select-lg example" id_ubicacion="" >
+                                <option value="" selected>Localidad</option>
+                            </select>
 
-    <div class="card">
-        <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">
-            Some quick example text to build on the card title
-            and make up the bulk of the card's content.
-          </p>
-          <a href="#!" class="btn btn-primary">Go somewhere</a>
+                            <select class="form-select form-select-lg mb-3 disabled" id="barrio" name="barrio"  aria-label=".form-select-lg example" id_ubicacion="">
+                                <option value="" selected>Barrio</option>
+                            </select>
+                        </div>
+                        <input name="ubicacion" style="display:none" value="" id="ubicacion" id_ubicacion="">
+                        <button type="submit" id="botonRegistrar"  class="fadeIn fourth">Registrar</button>
+
+                    </form>
+
+                </div>
+            </div>
         </div>
-      </div>
+    </section><!-- End Hero -->
 
+    @include('footer')
 
-
+<script type="text/javascript" src='{{ asset('public/js/ubicaciones.js') }}'></script>
+<script type="text/javascript" src="{{ asset('public/js/registro.js') }}"></script>
 </body>
+
 </html>

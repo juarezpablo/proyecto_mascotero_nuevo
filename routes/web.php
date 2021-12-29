@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 
 // Sección adopta
-Route::get('/adopta', [MascotasController::Class, 'adopta']);
+Route::get('/adopta', [MascotasController::class, 'adopta']);
 
 // Sección transito
 Route::get('/transito',  function () {
@@ -53,15 +53,14 @@ Route::post('/login',[LoginController::class, 'ingresar']);
 // Ruta para cerrar sesión
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 // Seccion nueva mascota, solo disponible para el admin
-Route::post('/adopta', [MascotasController::Class, 'agregarMascota'])->name('agregarMascota');
-
-
-
-
-
-Route::get('/registro',[RegistroController::class,'index'] );
+Route::post('/adopta', [MascotasController::class, 'agregarMascota'])->name('agregarMascota');
+// Seccion de registro
+Route::get('/registro',[RegistroController::class,'create'] )->name('registro');
+// Ruta para crear un nuevo usuario
 Route::post('/registro',[RegistroController::class,'store' ]);
-Route::resource('/registro',RegistroController::class);
+
+
+
 
 Route::resource('usuario', UsuarioController::class);
 Route::get('admin/usuario', [AdminController::class,'conseguir_usuarios'])->name('admin.conseguir_usuarios');

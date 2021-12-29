@@ -6,23 +6,35 @@
         <div class="row d-flex justify-content-center w-100" id="adopta" >
 
             @if(session('tipoUsuario')=='admin')
-            <h1 class="col-mt-5 offset-2">Bienvenida {{session('alias')}}</h1>
+            <h1 class="col-mt-5 mt-5 offset-2">Bienvenida {{session('alias')}}</h1>
 
             <!-- ======= Sección formulario añadir mascota  ======= -->
-            <section class="hero-container" data-aos="fade-up">
+            <section class="hero-container pt-0" data-aos="fade-up">
                 <div class="wrapper fadeInDown">
                     <div id="formContent" class="p-2">
+
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <h6>Por favor corrige los errores:</h6>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <form id="formAdoptaCrear" action="{{route('agregarMascota')}}" method="POST" enctype='multipart/form-data' >
                             @csrf
+                            <input name="ubicacion" style="display:none" value='' id='ubicacion' id_ubicacion=''>
                             <div class="d-flex justify-content-around">
-                                <select name="formTipoMascota" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option selected>Tipo de mascota</option>
+                                <select name="tipoMascota" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                    <option value="" selected>Tipo de mascota</option>
                                     <option value="perro">Perro</option>
                                     <option value="gato">Gato</option>
                                 </select>
 
-                                <select name="formSexo" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option selected>Sexo</option>
+                                <select name="sexo" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                    <option value="" selected>Sexo</option>
                                     <option value="hembra">Hembra</option>
                                     <option value="macho">Macho</option>
                                 </select>
@@ -30,80 +42,74 @@
 
                             <div class="input-group  d-flex justify-content-center">
                                 <div class="d-flex">
-                                    <label for="formEdad" class="form-control  w-auto">Edad (años)</label>
-                                    <span id="formEdadSpan" name="formEdadSpan"
+                                    <label for="edad" class="form-control  w-auto">Edad (años)</label>
+                                    <span id="edadSpan" name="edadSpan"
                                         class="form-control  w-auto">
                                     </span>
                                 </div>
-                                <input  id="formEdadInputRange" name="formEdadInputRange"
+                                <input  id="edadInputRange" name="edadInputRange"
                                     type="range" class="form-range" min="0" max="15" step="1"
-                                    oninput="formEdadSpan.innerHTML=formEdadInputRange.value">
+                                    oninput="edadSpan.innerHTML=edadInputRange.value">
                             </div>
 
                             <div class="d-flex justify-content-around">
-                                <input type="text" id="formNombre" class="fadeIn second" name="formNombre" placeholder="nombre">
+                                <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="nombre">
                             </div>
 
                             <div class="d-flex justify-content-around">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="formDesparasitado" name="formDesparasitado">
+                                    <input class="form-check-input" type="checkbox" value="" id="desparasitado" name="desparasitado">
                                     <label class="form-check-label" for="flexCheckDefault"> Desparasitado </label>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="formCastrado" name="formCastrado">
+                                    <input class="form-check-input" type="checkbox" value="" id="castrado" name="castrado">
                                     <label class="form-check-label" for="flexCheckDefault"> Castrado </label>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="formVacunado" name="formVacunado">
+                                    <input class="form-check-input" type="checkbox" value="" id="vacunado" name="vacunado">
                                     <label class="form-check-label" for="flexCheckDefault"> Vacunado </label>
                                 </div>
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="formImagen1" name="formImagen1" accept=".jpg, .jpeg, .png">
-                                <label class="input-group-text" for="formImagen1">Subir</label>
+                                <input type="file" class="form-control" id="imagen1" name="imagen1" accept=".jpg, .jpeg, .png">
+                                <label class="input-group-text" for="imagen1">Subir</label>
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="formImagen2" name="formImagen2" accept=".jpg, .jpeg, .png">
-                                <label class="input-group-text" for="formImagen2">Subir</label>
+                                <input type="file" class="form-control" id="imagen2" name="imagen2" accept=".jpg, .jpeg, .png">
+                                <label class="input-group-text" for="imagen2">Subir</label>
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="formImagen3" name="formImagen3" accept=".jpg, .jpeg, .png">
-                                <label class="input-group-text" for="formImagen3">Subir</label>
+                                <input type="file" class="form-control" id="imagen3" name="imagen3" accept=".jpg, .jpeg, .png">
+                                <label class="input-group-text" for="imagen3">Subir</label>
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="formImagen4" name="formImagen4" accept=".jpg, .jpeg, .png">
-                                <label class="input-group-text" for="formImagen4">Subir</label>
+                                <input type="file" class="form-control" id="imagen4" name="imagen4" accept=".jpg, .jpeg, .png">
+                                <label class="input-group-text" for="imagen4">Subir</label>
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="formImagen5" name="formImagen5" accept=".jpg, .jpeg, .png">
-                                <label class="input-group-text" for="formImagen5">Subir</label>
+                                <input type="file" class="form-control" id="imagen5" name="imagen5" accept=".jpg, .jpeg, .png">
+                                <label class="input-group-text" for="imagen5">Subir</label>
                             </div>
 
                             <div class="input-group">
                                 <span class="input-group-text">Observaciones</span>
-                                <textarea class="form-control" aria-label="Observaciones"  id="formObservaciones" name="formObservaciones" maxlength="50"></textarea>
+                                <textarea class="form-control" aria-label="Observaciones"  id="observaciones" name="observaciones" maxlength="1000"></textarea>
                             </div>
 
                             <div class="d-flex">
-                                <select class="form-select form-select-lg mb-3" id="formLocalidad" name="formLocalidad" aria-label=".form-select-lg example">
-                                    <option selected>Localidad</option>
-                                    <option value="c.a.b.a.">C.A.B.A</option>
-                                    <option value="lanus">Lanus</option>
-                                    <option value="quilmes">Quilmes</option>
+                                <select class="form-select form-select-lg mb-3" id="localidad" name="localidad" aria-label=".form-select-lg example" id_ubicacion="">
+                                    <option value="" selected>Localidad</option>
                                 </select>
 
-                                <select class="form-select form-select-lg mb-3 disabled" id="formBarrio" name="formBarrio"  aria-label=".form-select-lg example">
-                                    <option selected>Barrio</option>
-                                    <option value="caballito">Caballito</option>
-                                    <option value="palermo">Palermo</option>
-                                    <option value="barracas">Barracas</option>
+                                <select class="form-select form-select-lg mb-3 disabled" id="barrio" name="barrio"  aria-label=".form-select-lg example" id_ubicacion="">
+                                    <option value="" selected>Barrio</option>
                                 </select>
                             </div>
                             <button type="submit"  class="fadeIn fourth">Agregar mascota</button>
@@ -112,8 +118,42 @@
                     </div>
                 </div>
             </section>
+
+            <script defer type="text/javascript" src='{{ asset('public/js/ubicaciones.js') }}'></script>
+
+            <script>
+                adminCargaMascota();
+
+                function adminCargaMascota(){
+                    imagen1=document.getElementById("imagen1");
+                    if(imagen1){
+                        document.getElementById('edadSpan').innerHTML=document.getElementById('edadInputRange').value;
+                        document.getElementById("imagen2").disabled=true;
+                        document.getElementById("imagen3").disabled=true;
+                        document.getElementById("imagen4").disabled=true;
+                        document.getElementById("imagen5").disabled=true;
+                        imagen1.addEventListener('change',()=>{
+                            if(imagen1.value!='' && imagen1)
+                            {
+                                document.getElementById("imagen2").disabled=false;
+                                document.getElementById("imagen3").disabled=false;
+                                document.getElementById("imagen4").disabled=false;
+                                document.getElementById("imagen5").disabled=false;
+                            }
+                        })
+                        edad=document.getElementById('edadInputRange');
+                        edadSpan=document.getElementById('edadSpan');
+                        edad.addEventListener('input',()=>{
+                            if(edad.value=='0')
+                                edadSpan.innerHTML='<=1';
+                                else if(edad.value=='15')
+                                    edadSpan.innerHTML='>=15';
+                        })
+                    }
+                }
+            </script>
             @else
-            <h1 class="col-mt-5 mb-5 offset-2">Adopta a tu mascota {{session('alias')}}!!</h1>
+            <h1 class="col-mt-5 mt-5 offset-2">Adopta a tu mascota {{session('alias')}}!!</h1>
             @endif
                         @foreach ($mascotasEnAdopcion as $mascotaEnAdopcion)
 
@@ -166,7 +206,7 @@
                                                          @endphp
                                     </p>
                                     <p class="animal observaciones">{{ucfirst($mascotaEnAdopcion->observaciones)}}</p>
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeW53wZLNa2CLOfWaCSpM2gZwlgYO4kaZw7fvxXRR4U31ZuiA/viewform" target="_blank" class="btn btn-dark">Adopta</a>
+                                    <a id_mascota="{{$mascotaEnAdopcion->id_mascota}}" href="https://docs.google.com/forms/d/e/1FAIpQLSeW53wZLNa2CLOfWaCSpM2gZwlgYO4kaZw7fvxXRR4U31ZuiA/viewform" target="_blank" class="btn btn-dark">Adopta</a>
                                 </div>
                             </div>
                         </div>

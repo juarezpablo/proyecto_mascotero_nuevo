@@ -9,7 +9,9 @@
     if (all) {
       return [...document.querySelectorAll(el)]
     } else {
-      return document.querySelector(el)
+        if(el){
+            return document.querySelector(el)
+        }
     }
   }
 
@@ -225,5 +227,10 @@
       mirror: false
     });
 
-    document.getElementById('formEdadSpan').innerHTML=document.getElementById('formEdadInputRange').value;
   });
+
+
+
+
+
+

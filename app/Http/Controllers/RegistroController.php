@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+// Para encriptar contraseñas
+// use Illuminate\Support\Facates\Hash;
+
+// Para compartir errores detectados en la validacion al front
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+
 
 class RegistroController extends Controller
 {
@@ -13,7 +20,6 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        return view('registro');
     }
 
     /**
@@ -23,7 +29,7 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        //
+        return view('registro');
     }
 
     /**
@@ -34,7 +40,35 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validacion de campos del registro
+        $this->validate($request,[
+            'alias' => 'required|unique:usuario',
+            'contrasena' => 'required|digits_between:5,12',
+            'nombre' => 'required',
+            'contrasena' => 'required',
+            'apellido' => 'required',
+            'telefono' => 'required|integer',
+            'ubicacion' => 'required',
+        ]);
+        // Si pasa la validacion almaceno en variables lo capturado
+        $alias = $request->post("alias");
+        $contrasena = $request->post("contrasena");
+        $nombre = $request->post("nombre");
+        $apellido = $request->post("apellido");
+        $telefono = $request->post("telefono");
+        $id_ubicacion = $request->post("ubicacion");
+        // Almaceno en la base de datos
+        DB::table("usuario")->insert([
+            "alias" => $alias,
+            "contrasena" => $contrasena,
+            "nombre" => $nombre,
+            "apellido" => $apellido,
+            "telefono" => $telefono,
+            "id_ubicacion" => $id_ubicacion,
+        ]);
+        // Redirige a la seccion adopta
+        return redirect()->action([LoginController::class, 'login']);
+
     }
 
     /**
