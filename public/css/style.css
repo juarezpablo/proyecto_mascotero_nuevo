@@ -670,7 +670,7 @@ padding: 0px 10px 0px 10px;
   transform: scale(0.95);
 }
 
-.fadeIn[type=text],.fadeIn[type=password] {
+.fadeIn[type=text],.fadeIn[type=password],.fadeIn[type=tel] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -845,4 +845,8 @@ padding: 0px 10px 0px 10px;
 
     height: 100% !important;
     object-fit: cover !important;
+}
+
+.heroRegistro{
+    height: 135vh !important;
 }

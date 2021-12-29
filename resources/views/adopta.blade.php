@@ -206,7 +206,7 @@
                                                          @endphp
                                     </p>
                                     <p class="animal observaciones">{{ucfirst($mascotaEnAdopcion->observaciones)}}</p>
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeW53wZLNa2CLOfWaCSpM2gZwlgYO4kaZw7fvxXRR4U31ZuiA/viewform" target="_blank" class="btn btn-dark">Adopta</a>
+                                    <a id_mascota="{{$mascotaEnAdopcion->id_mascota}}" href="https://docs.google.com/forms/d/e/1FAIpQLSeW53wZLNa2CLOfWaCSpM2gZwlgYO4kaZw7fvxXRR4U31ZuiA/viewform" target="_blank" class="btn btn-dark">Adopta</a>
                                 </div>
                             </div>
                         </div>

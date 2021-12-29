@@ -23,6 +23,7 @@
           <li><a class="nav-link scrollto" href="#contacto">Contactanos</a></li>
           @if (!session('alias'))
             <li><a class="nav-link scrollto" href="login" id="login">Login</a></li>
+            <li><a class="nav-link scrollto" href="registro" id="registro">Registro</a></li>
           @else
             <li><a class="nav-link scrollto" href="logout"  id="logout">Logout</a></li>
           @endif
