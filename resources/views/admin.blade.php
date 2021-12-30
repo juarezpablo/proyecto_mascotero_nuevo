@@ -8,7 +8,7 @@
     <title>Admin</title>
 </head>
 <body>
-   <h1>Bienvenido {{ session('alias') }}  </h1> 
+   <h1>Bienvenido {{ session('alias') }}  </h1>
 
 Nombre de Admin es {{ session('alias') }} y su password es {{ session('pass') }}
 
@@ -16,8 +16,9 @@ Nombre de Admin es {{ session('alias') }} y su password es {{ session('pass') }}
 <br>
 
 <a href="{{ route('admin.conseguir_usuarios') }}" id="lista_usuarios"  class="btn btn-success">Ver lista de Usuarios  </a>
+<br><br>
 <a href="{{route("mascotas.index")}}" id="lista_mascotas" class="btn btn-success" >Ver lista de Mascotas    </a>
-<br>
+<br><br>
 <a href="{{ route('formularios.index')}}" id="forms"  class="btn btn-success">Ver Formularios  </a>
 
 </body>
