@@ -49,8 +49,12 @@ class LoginController extends Controller
 
 
 
-    if($isLogged==true)
-        return redirect()->action([MascotasController::class, 'adopta'],'#adopta');
+    if($isLogged==true){
+        if(!strcmp(session('tipoUsuario'),'admin'))
+            return redirect()->action([MascotasController::class, 'index']);
+            else
+                return redirect()->action([MascotasController::class, 'adopta'],'#adopta');
+    }
         else {
             Session::flash('errorLogin', 'El usuario o contraseña no son validos');
             return redirect()->route('login');

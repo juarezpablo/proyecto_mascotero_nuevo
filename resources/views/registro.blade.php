@@ -5,6 +5,49 @@
 
 <body>
 
+    <!-- =============== Modal de errores =============== -->
+    @if ($errors->any())
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" 
+        id="botonModal" style="display:none">
+    
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Errores</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger">
+                                        <h6>Por favor corrige los errores:</h6>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <script defer >setTimeout(()=>document.getElementById('botonModal').click(), 2000);</script> -->
+    @endif
+    <!-- =============== Fin modal de errores =============== -->
+
+
+
   @include('header')
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="heroRegistro" style="margin-bottom: 10px;">
@@ -19,14 +62,47 @@
                         @csrf
 
                         @if ($errors->any())
-                        <div class="alert alert-danger">
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" 
+    id="botonModal" style="display:none">
+  
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Errores</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      
+        <div class="alert alert-danger">
                             <h6>Por favor corrige los errores:</h6>
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
-                        </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <script defer>document.getElementById('botonModal').click();</script> -->
                         @endif
 
                         <input type="text" id="alias" class="fadeIn first" name="alias" placeholder="Usuario" >
@@ -58,8 +134,14 @@
 
     @include('footer')
 
-<script type="text/javascript" src='{{ asset('public/js/ubicaciones.js') }}'></script>
+<script type="text/javascript" src="{{ asset('public/js/ubicaciones.js') }}"></script>
 <script type="text/javascript" src="{{ asset('public/js/registro.js') }}"></script>
+
+@if ($errors->any())
+<script defer> $( document ).ready(function() {
+    document.getElementById('botonModal').click();
+    }); </script>
+@endif
 </body>
 
 </html>

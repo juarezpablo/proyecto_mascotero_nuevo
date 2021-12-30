@@ -11,6 +11,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Session;
 
 
 
@@ -46,18 +47,54 @@ class MascotasController extends Controller
      */
     public function index()
     {
-        if((session('rol')=='admin')){
-            $tablaMascotas=DB::select("SELECT * FROM mascota");
+        if((session('tipoUsuario')=='admin')){
+        // Devuelve lista completa de mascotas en adopcion
+        $mascotasEnAdopcionQuery=DB::select("SELECT * FROM mascota
+                                    INNER JOIN ubicacion
+                                    on mascota.id_ubicacion=ubicacion.id_ubicacion
+                                    WHERE adoptado='no'");
+        // Devuelve la lista de perros que poseen alguna solicitud de adopcion pendiente
+        $solicitudPendientePerros=DB::select("SELECT id_formulario_perro,formulario_perro.id_mascota,formulario_perro.proceso_adopcion
+                                    FROM formulario_perro
+                                    INNER JOIN mascota
+                                    ON mascota.id_mascota=formulario_perro.id_mascota
+                                    WHERE formulario_perro.proceso_adopcion='solicitado'
+                                    GROUP BY mascota.id_mascota");
+        // +---------------------+------------+------------------+
+        // | id_formulario_perro | id_mascota | proceso_adopcion |
+        // +---------------------+------------+------------------+
+        // |                   8 |          2 | solicitado       |
+        // |                   7 |          3 | solicitado       |
+        // |                   6 |          7 | solicitado       |
+        // +---------------------+------------+------------------+
+        // Devuelve la lista de perros que poseen alguna solicitud de adopcion pendiente
+        $solicitudPendienteGatos=DB::select("SELECT id_formulario_gato,formulario_gato.id_mascota,formulario_gato.proceso_adopcion
+                                    FROM formulario_gato
+                                    INNER JOIN mascota
+                                    ON mascota.id_mascota=formulario_gato.id_mascota
+                                    WHERE formulario_gato.proceso_adopcion='solicitado'
+                                    GROUP BY mascota.id_mascota");
+        // +--------------------+------------+------------------+
+        // | id_formulario_gato | id_mascota | proceso_adopcion |
+        // +--------------------+------------+------------------+
+        // |                  1 |          2 | solicitado       |
+        // |                  2 |          3 | solicitado       |
+        // |                 10 |          5 | solicitado       |
+        // |                  8 |          6 | solicitado       |
+        // |                  7 |          8 | solicitado       |
+        // +--------------------+------------+------------------+
 
-
-            $dataMascota=[
-            "tablaMascota" => $tablaMascotas,
-             ];
-
-           return view('mascotas', $dataMascota);
+        return view('mascotas')
+                ->with('mascotasEnAdopcion', $mascotasEnAdopcionQuery)
+                ->with('solicitudPendientePerros', $solicitudPendientePerros)
+                ->with('solicitudPendienteGatos', $solicitudPendienteGatos);
        }
        else{
-           return redirect ()->route("registro.index");
+        Session::forget('alias');
+        Session::forget('tipoUsuario');
+        Session::forget('id');
+        Session::flush();
+        return redirect()->action([LoginController::class, 'login']);
        }
     }
 
@@ -88,7 +125,6 @@ class MascotasController extends Controller
         $castrado=$request->post("castrado");
         $observaciones=$request->post("observaciones");
 
-        var_dump($castrado);
 
         DB::table("mascota")->insert([
             "tipo_mascota" => $tipo_mascota,
@@ -179,7 +215,7 @@ class MascotasController extends Controller
             "id_ubicacion" => $id_ubicacion,
         ]);
 
-        return redirect()->action([MascotasController::class, 'adopta'],'#adopta');
+        return redirect()->action([MascotasController::class, 'index'],'#bienvenida');
     }
     /**
      * Display the specified resource.
@@ -187,9 +223,37 @@ class MascotasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($tipoMascota,$id)
     {
-        //
+        if((session('tipoUsuario')=='admin')){
+            if(!strcmp($tipoMascota,"perro")){
+                $usuariosSolicitantes=DB::select("SELECT *
+                                                    FROM formulario_perro
+                                                    INNER JOIN usuario
+                                                    ON formulario_perro.id_usuario=usuario.id_usuario
+                                                    WHERE id_mascota=$id
+                                                ");
+
+            }
+            else{
+                $usuariosSolicitantes=DB::select("SELECT *
+                                                    FROM formulario_gato
+                                                    INNER JOIN usuario
+                                                    ON formulario_gato.id_usuario=usuario.id_usuario
+                                                    WHERE id_mascota=$id
+                                                ");
+
+            }
+                return view('mascotaListadoSolicitud')
+                ->with('usuariosSolicitantes', $usuariosSolicitantes);
+           }
+           else{
+            Session::forget('alias');
+            Session::forget('tipoUsuario');
+            Session::forget('id');
+            Session::flush();
+            return redirect()->action([LoginController::class, 'login']);
+           }
     }
 
     /**
@@ -233,6 +297,8 @@ class MascotasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // Cumple la funcion de index, almacena una nueva mascota en adopcion
+
     public function adopta()
     {
 
@@ -240,6 +306,27 @@ class MascotasController extends Controller
                                     INNER JOIN ubicacion
                                     on mascota.id_ubicacion=ubicacion.id_ubicacion
                                     WHERE adoptado='no'");
-        return view('adopta', ['mascotasEnAdopcion' => $mascotasEnAdopcionQuery]);
+        if(session('id')){
+            $id_usuario = session('id');
+            $gatosAdopcionSolicitada=DB::select("SELECT * FROM usuario
+                                        INNER JOIN formulario_gato
+                                        ON formulario_gato.id_usuario=usuario.id_usuario
+                                        INNER JOIN mascota
+                                        ON mascota.id_mascota=formulario_gato.id_mascota
+                                        WHERE usuario.id_usuario=$id_usuario");
+            $perrosAdopcionSolicitada=DB::select("SELECT * FROM usuario
+                                        INNER JOIN formulario_perro
+                                        ON formulario_perro.id_usuario=usuario.id_usuario
+                                        INNER JOIN mascota
+                                        ON mascota.id_mascota=formulario_perro.id_mascota
+                                        WHERE usuario.id_usuario=$id_usuario");
+            return view('adopta')
+                        ->with('mascotasEnAdopcion', $mascotasEnAdopcionQuery)
+                        ->with('gatosAdopcionSolicitada', $gatosAdopcionSolicitada)
+                        ->with('perrosAdopcionSolicitada', $perrosAdopcionSolicitada);
+
+        }
+        else return view('adopta', ['mascotasEnAdopcion' => $mascotasEnAdopcionQuery]);
     }
+
 }

@@ -66,7 +66,7 @@ class RegistroController extends Controller
             "telefono" => $telefono,
             "id_ubicacion" => $id_ubicacion,
         ]);
-        // Redirige a la seccion adopta
+        // Redirige a la seccion login
         return redirect()->action([LoginController::class, 'login']);
 
     }

@@ -856,3 +856,32 @@ padding: 0px 10px 0px 10px;
 #barrio{
     font-size: 0.8rem;
 }
+/* Seccion adopta */
+
+.id_mascota, .id_usuario, .tipo_mascota{
+    display: none;
+}
+
+.card-body{
+    position: relative;
+    height: 10rem;
+}
+.card-footer{
+  background-color: rgba(0,0,0,0);;
+  border-top: 0;
+}
+.formAdopcion, .formCancAdopcion{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.solicitado{
+    background-color: lightseagreen !important;
+}
+.cardAdop{
+    height: 20rem;
+    height: 38rem !important;
+}
+.cancelar{
+    background-color: #7F2A3C !important;
+}

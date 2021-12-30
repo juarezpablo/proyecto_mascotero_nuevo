@@ -11,7 +11,9 @@
 
   <main id="main">
     @yield('contenido')
-    @include('formContactanos')
+    @if (!session('tipoUsuario')=='admin')
+        @include('formContactanos')
+    @endif
   </main><!-- End #main -->
 
   @include('footer')
