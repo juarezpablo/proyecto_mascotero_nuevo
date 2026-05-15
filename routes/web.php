@@ -4,10 +4,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\MascotasController;
 use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
+
+
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SolicitudAdopcionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +22,49 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home
+Route::get('/index', function () {
+    return view('index');
+});
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::get('/login', [SessionController::class,'index'])->name('login.index');
-Route::post('/login', [SessionController::class,'store']);
-Route::get('/registro',[RegistroController::class,'index'] );
+
+// Sección adopta
+Route::get('/adopta', [MascotasController::class, 'adopta']);
+
+// Sección transito
+Route::get('/transito',  function () {
+    return view('transito');
+});
+
+
+// Sección donacion
+Route::get('/dona',  function () {
+    return view('dona');
+});
+
+// Sección de login
+Route::get('/login',[LoginController::class, 'login'])->name('login');
+// Ruta para validar las credencilaes enviadas por el formulario de login
+Route::post('/login',[LoginController::class, 'ingresar']);
+// Ruta para cerrar sesión
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+// Seccion mascotas
+Route::get('/mascotas',[MascotasController::class, 'index'])->name('index');
+// Seccion listado de solicitudes por mascota
+Route::get('/mascotas/{tipoMascota}/{id}',[MascotasController::class, 'show'])->name('show');
+// Seccion nueva mascota, solo disponible para el admin
+Route::post('/mascotas', [MascotasController::class, 'agregarMascota'])->name('agregarMascota');
+// Seccion de registro
+Route::get('/registro',[RegistroController::class,'create'] )->name('registro');
+// Ruta para crear un nuevo usuario
 Route::post('/registro',[RegistroController::class,'store' ]);
-Route::resource('/registro',RegistroController::class);
+// Crear una solicitud de adopcion de mascota
+Route::post('/adopta',[SolicitudAdopcionController::class, 'store'])->name('store');
+// Eliminar una solicitud de adopcion de mascota
+Route::delete('/adopta/{id_mascota}/{id_usuario}/{tipo_mascota}',[SolicitudAdopcionController::class, 'destroy']);
 
 Route::resource('usuario', UsuarioController::class);
 Route::get('admin/usuario', [AdminController::class,'conseguir_usuarios'])->name('admin.conseguir_usuarios');
@@ -43,9 +79,6 @@ Route::resource('admin', AdminController::class);
  Route::get('formularios/rechazar',[FormularioController::class,'rechazar_gato'])->name('formularios.rechazar_gato');
 
  Route::resource('formularios', FormularioController::class);
- Route::resource('mascotas', MascotasController::class);
-
-
 
 
 

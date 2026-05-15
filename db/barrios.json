@@ -1,0 +1,258 @@
+[
+	{
+		"barrio" : null,
+		"id_ubicacion" : 1
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 2
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 3
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 4
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 5
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 6
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 7
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 8
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 9
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 10
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 11
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 12
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 13
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 14
+	},
+	{
+		"barrio" : null,
+		"id_ubicacion" : 15
+	},
+	{
+		"barrio" : "saavedra",
+		"id_ubicacion" : 16
+	},
+	{
+		"barrio" : "nuñez",
+		"id_ubicacion" : 17
+	},
+	{
+		"barrio" : "belgrano",
+		"id_ubicacion" : 18
+	},
+	{
+		"barrio" : "coghlan",
+		"id_ubicacion" : 19
+	},
+	{
+		"barrio" : "villa urquiza",
+		"id_ubicacion" : 20
+	},
+	{
+		"barrio" : "villa pueyrredon",
+		"id_ubicacion" : 21
+	},
+	{
+		"barrio" : "parque chas",
+		"id_ubicacion" : 22
+	},
+	{
+		"barrio" : "villa ortuzar",
+		"id_ubicacion" : 23
+	},
+	{
+		"barrio" : "colegiales",
+		"id_ubicacion" : 24
+	},
+	{
+		"barrio" : "palermo",
+		"id_ubicacion" : 25
+	},
+	{
+		"barrio" : "chacarita",
+		"id_ubicacion" : 26
+	},
+	{
+		"barrio" : "la paternal",
+		"id_ubicacion" : 27
+	},
+	{
+		"barrio" : "agronomia",
+		"id_ubicacion" : 28
+	},
+	{
+		"barrio" : "villa del parque",
+		"id_ubicacion" : 29
+	},
+	{
+		"barrio" : "villa devoto",
+		"id_ubicacion" : 30
+	},
+	{
+		"barrio" : "villa crespo",
+		"id_ubicacion" : 31
+	},
+	{
+		"barrio" : "recoleta",
+		"id_ubicacion" : 32
+	},
+	{
+		"barrio" : "retiro",
+		"id_ubicacion" : 33
+	},
+	{
+		"barrio" : "villa real",
+		"id_ubicacion" : 34
+	},
+	{
+		"barrio" : "monte castro",
+		"id_ubicacion" : 35
+	},
+	{
+		"barrio" : "versalles",
+		"id_ubicacion" : 36
+	},
+	{
+		"barrio" : "liniers",
+		"id_ubicacion" : 37
+	},
+	{
+		"barrio" : "villa luro",
+		"id_ubicacion" : 38
+	},
+	{
+		"barrio" : "vélez sarsfield",
+		"id_ubicacion" : 39
+	},
+	{
+		"barrio" : "floresta",
+		"id_ubicacion" : 40
+	},
+	{
+		"barrio" : "villa santa rita",
+		"id_ubicacion" : 41
+	},
+	{
+		"barrio" : "villa general mitre",
+		"id_ubicacion" : 42
+	},
+	{
+		"barrio" : "caballito",
+		"id_ubicacion" : 43
+	},
+	{
+		"barrio" : "almagro",
+		"id_ubicacion" : 44
+	},
+	{
+		"barrio" : "balvanera",
+		"id_ubicacion" : 45
+	},
+	{
+		"barrio" : "san nicolas",
+		"id_ubicacion" : 46
+	},
+	{
+		"barrio" : "montserrat",
+		"id_ubicacion" : 47
+	},
+	{
+		"barrio" : "puerto madero",
+		"id_ubicacion" : 48
+	},
+	{
+		"barrio" : "san telmo",
+		"id_ubicacion" : 49
+	},
+	{
+		"barrio" : "la boca",
+		"id_ubicacion" : 50
+	},
+	{
+		"barrio" : "constitución",
+		"id_ubicacion" : 51
+	},
+	{
+		"barrio" : "barracas",
+		"id_ubicacion" : 52
+	},
+	{
+		"barrio" : "san cristobal",
+		"id_ubicacion" : 53
+	},
+	{
+		"barrio" : "parque patricios",
+		"id_ubicacion" : 54
+	},
+	{
+		"barrio" : "boedo",
+		"id_ubicacion" : 55
+	},
+	{
+		"barrio" : "nueva pompeya",
+		"id_ubicacion" : 56
+	},
+	{
+		"barrio" : "boedo",
+		"id_ubicacion" : 57
+	},
+	{
+		"barrio" : "parque chacabuco",
+		"id_ubicacion" : 58
+	},
+	{
+		"barrio" : "flores",
+		"id_ubicacion" : 59
+	},
+	{
+		"barrio" : "villa soldati",
+		"id_ubicacion" : 60
+	},
+	{
+		"barrio" : "parque avellaneda",
+		"id_ubicacion" : 61
+	},
+	{
+		"barrio" : "mataderos",
+		"id_ubicacion" : 62
+	},
+	{
+		"barrio" : "villa lugano",
+		"id_ubicacion" : 63
+	},
+	{
+		"barrio" : "villa riachuelo",
+		"id_ubicacion" : 64
+	}
+]

@@ -1,0 +1,322 @@
+[
+	{
+		"id_ubicacion" : 1,
+		"localidad" : "san isidro",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 2,
+		"localidad" : "vicente lopez",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 3,
+		"localidad" : "general san martin",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 4,
+		"localidad" : "tres de febrero",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 5,
+		"localidad" : "hurlingham",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 6,
+		"localidad" : "moron",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 7,
+		"localidad" : "merlo",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 8,
+		"localidad" : "la matanza",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 9,
+		"localidad" : "ezeiza",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 10,
+		"localidad" : "esteban echeverria",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 11,
+		"localidad" : "lomas de zamora",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 12,
+		"localidad" : "almirante brown",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 13,
+		"localidad" : "quilmes",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 14,
+		"localidad" : "avellaneda",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 15,
+		"localidad" : "lanus",
+		"barrio" : null
+	},
+	{
+		"id_ubicacion" : 16,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "saavedra"
+	},
+	{
+		"id_ubicacion" : 17,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "nuñez"
+	},
+	{
+		"id_ubicacion" : 18,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "belgrano"
+	},
+	{
+		"id_ubicacion" : 19,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "coghlan"
+	},
+	{
+		"id_ubicacion" : 20,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa urquiza"
+	},
+	{
+		"id_ubicacion" : 21,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa pueyrredon"
+	},
+	{
+		"id_ubicacion" : 22,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "parque chas"
+	},
+	{
+		"id_ubicacion" : 23,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa ortuzar"
+	},
+	{
+		"id_ubicacion" : 24,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "colegiales"
+	},
+	{
+		"id_ubicacion" : 25,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "palermo"
+	},
+	{
+		"id_ubicacion" : 26,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "chacarita"
+	},
+	{
+		"id_ubicacion" : 27,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "la paternal"
+	},
+	{
+		"id_ubicacion" : 28,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "agronomia"
+	},
+	{
+		"id_ubicacion" : 29,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa del parque"
+	},
+	{
+		"id_ubicacion" : 30,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa devoto"
+	},
+	{
+		"id_ubicacion" : 31,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa crespo"
+	},
+	{
+		"id_ubicacion" : 32,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "recoleta"
+	},
+	{
+		"id_ubicacion" : 33,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "retiro"
+	},
+	{
+		"id_ubicacion" : 34,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa real"
+	},
+	{
+		"id_ubicacion" : 35,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "monte castro"
+	},
+	{
+		"id_ubicacion" : 36,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "versalles"
+	},
+	{
+		"id_ubicacion" : 37,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "liniers"
+	},
+	{
+		"id_ubicacion" : 38,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa luro"
+	},
+	{
+		"id_ubicacion" : 39,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "vélez sarsfield"
+	},
+	{
+		"id_ubicacion" : 40,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "floresta"
+	},
+	{
+		"id_ubicacion" : 41,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa santa rita"
+	},
+	{
+		"id_ubicacion" : 42,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa general mitre"
+	},
+	{
+		"id_ubicacion" : 43,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "caballito"
+	},
+	{
+		"id_ubicacion" : 44,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "almagro"
+	},
+	{
+		"id_ubicacion" : 45,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "balvanera"
+	},
+	{
+		"id_ubicacion" : 46,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "san nicolas"
+	},
+	{
+		"id_ubicacion" : 47,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "montserrat"
+	},
+	{
+		"id_ubicacion" : 48,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "puerto madero"
+	},
+	{
+		"id_ubicacion" : 49,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "san telmo"
+	},
+	{
+		"id_ubicacion" : 50,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "la boca"
+	},
+	{
+		"id_ubicacion" : 51,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "constitución"
+	},
+	{
+		"id_ubicacion" : 52,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "barracas"
+	},
+	{
+		"id_ubicacion" : 53,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "san cristobal"
+	},
+	{
+		"id_ubicacion" : 54,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "parque patricios"
+	},
+	{
+		"id_ubicacion" : 55,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "boedo"
+	},
+	{
+		"id_ubicacion" : 56,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "nueva pompeya"
+	},
+	{
+		"id_ubicacion" : 57,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "boedo"
+	},
+	{
+		"id_ubicacion" : 58,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "parque chacabuco"
+	},
+	{
+		"id_ubicacion" : 59,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "flores"
+	},
+	{
+		"id_ubicacion" : 60,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa soldati"
+	},
+	{
+		"id_ubicacion" : 61,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "parque avellaneda"
+	},
+	{
+		"id_ubicacion" : 62,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "mataderos"
+	},
+	{
+		"id_ubicacion" : 63,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa lugano"
+	},
+	{
+		"id_ubicacion" : 64,
+		"localidad" : "c.a.b.a.",
+		"barrio" : "villa riachuelo"
+	}
+]
